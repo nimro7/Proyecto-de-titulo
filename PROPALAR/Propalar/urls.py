@@ -19,4 +19,6 @@ from appgestion import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', views.login),
+    path('registro/',views.registro),
+    path('index/',views.index),
 ]
