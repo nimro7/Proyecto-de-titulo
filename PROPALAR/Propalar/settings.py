@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'appgestion',
+    
 ]
 
 MIDDLEWARE = [
@@ -76,11 +77,11 @@ WSGI_APPLICATION = 'Propalar.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'sql_server.pyodbc',
+        'ENGINE': 'mssql',
         'NAME': 'proyecto_titulo',
         "USER": "",
         "PASSWORD": "",
-        "HOST": "DESKTOP-HOR9BME",
+        "HOST": "DESKTOP-SFCG3M1",
         "PORT": "",
         "OPTIONS": {"driver": "ODBC Driver 13 for SQL Server", 
         },

@@ -10,14 +10,22 @@ def registro(request):
 def login(request):
     return render(request,'logins.html')
 
+def explorar(request):
+    return render(request,'explorar.html')
+    
+def contacto(request):
+    return render(request,'contacto.html')
+
+def crear(request):
+    return render(request,'crear.html')    
 
 def paginaLogin(request):    
     if request.method=='POST':     
         try:             
-            detalleUsuario=usuario.objects.get(Nickname=request.POST['nickname'], contraseña=request.POST['contraseña'])           
-            print("Usuario=", detalleUsuario)            
+            detalleUsuario=usuario.objects.get(nickname=request.POST['nickname'], contraseña=request.POST['contraseña'])           
+            print("usuario=", detalleUsuario)            
             request.session['nickname']=detalleUsuario.Nickname          
             return render(request, 'index.html')         
         except usuario.DoesNotExist as e: 
             messages.success(request, 'Nombre de usuario o password no es correcto')    
-    return render(request, 'logins.html')
+    return render(request, 'index.html')
