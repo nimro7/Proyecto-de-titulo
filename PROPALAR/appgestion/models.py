@@ -13,4 +13,5 @@ class usuario(models.Model):
     telefono = models.CharField(max_length=50)
     id_solicitud = models.IntegerField()
 
-
+class prueba(models.Model):
+    dato= models.CharField(primary_key=True, max_length=50)

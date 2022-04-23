@@ -1,5 +1,8 @@
 from django.shortcuts import render
+from django.http import HttpResponse
+from django.http import Http404
 from appgestion.models import usuario
+from django.contrib import messages
 # Create your views here.
 def index(request):
     return render(request,'index.html')
@@ -24,8 +27,8 @@ def paginaLogin(request):
         try:             
             detalleUsuario=usuario.objects.get(nickname=request.POST['nickname'], contraseña=request.POST['contraseña'])           
             print("usuario=", detalleUsuario)            
-            request.session['nickname']=detalleUsuario.Nickname          
+            request.session['nickname']=detalleUsuario.nickname          
             return render(request, 'index.html')         
         except usuario.DoesNotExist as e: 
             messages.success(request, 'Nombre de usuario o password no es correcto')    
-    return render(request, 'index.html')
+    return render(request, 'logins.html')

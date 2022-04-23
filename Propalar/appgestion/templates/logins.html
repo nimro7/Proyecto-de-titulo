@@ -20,9 +20,8 @@
           <p class="text-center pb-2 text-3xl">Bienvenidos a Propalar</p>
           
           
-          <form action="/paginaLogin/" class="my-5">
+          <form method="post" class="my-5">
             
-
             <div
                     class="  my-2 border mx-auto    border-[2px]  w-10/12 justify-center flex items-center rounded-md shadow-md">
                     <div>
@@ -35,7 +34,7 @@
                             </svg>
                         </button>
                     </div>
-
+                    {% csrf_token %}
                     <div class="  w-full">
                         <input type="text" x-model="input1"
                             class="w-full h-12 px-4 py-1 rounded-r-md border border-gray-100 text-gray-800 focus:outline-none"
@@ -69,7 +68,11 @@
             </div>
             
             <hr>
-
+            {% if messages %}
+              {% for msg in messages %}
+              <b> {{msg}} </b>
+              {% endfor %}
+              {% endif %}
           </form>
           
           <hr>
