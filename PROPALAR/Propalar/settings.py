@@ -81,7 +81,7 @@ DATABASES = {
         'NAME': 'proyecto_titulo',
         "USER": "",
         "PASSWORD": "",
-        "HOST": "DESKTOP-SFCG3M1",
+        "HOST": "DESKTOP-1SHIPPI",
         "PORT": "",
         "OPTIONS": {"driver": "ODBC Driver 13 for SQL Server", 
         },
