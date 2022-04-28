@@ -20,7 +20,10 @@ def contacto(request):
     return render(request,'contacto.html')
 
 def crear(request):
-    return render(request,'crear.html')    
+    return render(request,'crear.html')   
+
+def bienvenida(request):
+    return render(request,'bienvenida.html')
 
 def paginaLogin(request):    
     if request.method=='POST':     
