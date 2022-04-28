@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'Propalar.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'mssql',
+        'ENGINE': 'sql_server.pyodbc',
         'NAME': 'proyecto_titulo',
         "USER": "",
         "PASSWORD": "",
