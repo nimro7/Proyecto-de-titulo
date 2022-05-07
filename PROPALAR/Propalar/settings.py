@@ -54,7 +54,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'Propalar.urls'
 
 MEDIA_URL= '/media/'
-MEDIA_URL = os.path.join(BASE_DIR, "media")
+MEDIA_URL = os.path.join(BASE_DIR, "media/")
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

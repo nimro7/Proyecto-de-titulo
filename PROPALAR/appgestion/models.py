@@ -59,10 +59,64 @@ class solicitudes(models.Model):
     id_solicitudes = models.AutoField(primary_key= True)
     titulo = models.CharField(max_length=50)
     descripcion = models.CharField(max_length=500)
-    imagen = models.ImageField(verbose_name='Imagen',upload_to='solicitudes',null=True,blank=True)
-    usuario_id = models.ForeignKey(pais, on_delete=models.CASCADE)
+    imagen = models.ImageField(verbose_name='Imagen',upload_to='solicitudes/',null=True,blank=True)
+    usuario_id = models.ForeignKey(usuarios, on_delete=models.CASCADE)
+    
+
+class tipo_solicitud(models.Model):
+    id_Cat_sol = models.AutoField(primary_key= True)
+    nombre_cat = models.CharField(max_length=50)
+
+class proyecto(models.Model):
+    id_proyecto = models.AutoField(primary_key= True)
+    titulo = models.CharField(max_length=50)
+    sub_titulo = models.CharField(max_length=50, null = True)
+    cuerpo = models.CharField(max_length=3000)
+    monto_meta = models.FloatField(null = True)
+    monto_recauda = models.FloatField(null = True)
+
+class tipo_proyecto(models.Model):
+    id_tipo_pro =  models.AutoField(primary_key= True)
+    nombre_tipo  = models.CharField(max_length=50)
+
+class benefio_pro(models.Model):
+    id_benef = models.AutoField(primary_key= True)
+    tipo_benef = models.CharField(max_length=50)
+    descripcion = models.CharField(max_length=200)
+
+class equipo_pro(models.Model):
+    id_equipo = models.AutoField(primary_key= True)
+    nombre1 = models.CharField(max_length=50)
+    cargo1 = models.CharField(max_length=50)
+    foto1 = models.ImageField(verbose_name='Imagen',upload_to='fotos/',null=True,blank=True)
+    nombre2 = models.CharField(max_length=50)
+    cargo2 = models.CharField(max_length=50)
+    foto2 = models.ImageField(verbose_name='Imagen',upload_to='fotos/',null=True,blank=True)
+    nombre3 = models.CharField(max_length=50)
+    cargo3 = models.CharField(max_length=50)
+    foto3 = models.ImageField(verbose_name='Imagen',upload_to='fotos/',null=True,blank=True)
+    nombre4 = models.CharField(max_length=50)
+    cargo4 = models.CharField(max_length=50)
+    foto4 = models.ImageField(verbose_name='Imagen',upload_to='fotos/',null=True,blank=True)
+    nombre5 = models.CharField(max_length=50)
+    cargo5 = models.CharField(max_length=50)
+    foto5 = models.ImageField(verbose_name='Imagen',upload_to='fotos/',null=True,blank=True)
+
+class material_pro(models.Model):
+    id_mat = models.AutoField(primary_key= True)
+    foto1 = models.ImageField(verbose_name='Imagen',upload_to='materiales/',null=True,blank=True)
+    foto2 = models.ImageField(verbose_name='Imagen',upload_to='materiales/',null=True,blank=True)
+    foto3 = models.ImageField(verbose_name='Imagen',upload_to='materiales/',null=True,blank=True)
+    foto4 = models.ImageField(verbose_name='Imagen',upload_to='materiales/',null=True,blank=True)
+    foto5 = models.ImageField(verbose_name='Imagen',upload_to='materiales/',null=True,blank=True)
+
+class transsaccion(models.Model):
+    id_Trans = models.AutoField(primary_key= True)
+    fecha = models.DateTimeField()
+    monto = models.FloatField()
 
 
 
+    
 
     
