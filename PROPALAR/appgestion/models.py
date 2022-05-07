@@ -54,3 +54,15 @@ class datos_banco(models.Model):
         usuarios,
         on_delete=models.CASCADE
     )
+
+class solicitudes(models.Model):
+    id_solicitudes = models.AutoField(primary_key= True)
+    titulo = models.CharField(max_length=50)
+    descripcion = models.CharField(max_length=500)
+    imagen = models.ImageField(verbose_name='Imagen',upload_to='solicitudes',null=True,blank=True)
+    usuario_id = models.ForeignKey(pais, on_delete=models.CASCADE)
+
+
+
+
+    
