@@ -85,8 +85,7 @@ DATABASES = {
         "PASSWORD": "",
         "HOST": "LAPTOP-N7BO4IS4",
         "PORT": "",
-        "OPTIONS": {"driver": "ODBC Driver 13 for SQL Server", 
-        },
+        "OPTIONS": {"driver": "ODBC Driver 13 for SQL Server"},
     }
 }
 

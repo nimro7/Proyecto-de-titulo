@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import Http404
-from appgestion.models import usuario
+from appgestion.models import usuarios
 from django.contrib import messages
 # Create your views here.
 def index(request):
@@ -35,3 +35,20 @@ def paginaLogin(request):
         except usuario.DoesNotExist as e: 
             messages.success(request, 'Nombre de usuario o password no es correcto')    
     return render(request, 'logins.html')
+
+def registroUsuario(request):
+    nickname=request.GET["nickname"]
+    contraseña=request.GET["contrasena"]
+    nombres=request.GET["Nombres"]
+    apellidos_pat=request.GET["appPaterno"]
+    apellido_mat=request.GET["appMater"]
+    correo=request.GET["correo"]
+    telefono=request.GET["telefono"]
+    roll = 1
+    if len(nickname)>0:
+        us=usuarios(nickname=nickname,contraseña=contraseña,nombres=nombres,apellido_pat=apellidos_pat,apellido_mat=apellido_mat,correo=correo,telefono=telefono,roll=roll)
+        us.save()
+        mensaje="Usuario Registrado"
+    else:
+        mensaje="usuario no registrado"
+    return HttpResponse(mensaje)
