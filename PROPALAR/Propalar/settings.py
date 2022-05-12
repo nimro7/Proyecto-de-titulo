@@ -79,11 +79,11 @@ WSGI_APPLICATION = 'Propalar.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'mssql',
-        'NAME': 'proyecto_titulo_mssql',
+        'ENGINE': 'sql_server.pyodbc',
+        'NAME': 'proyecto_titulo',
         "USER": "",
         "PASSWORD": "",
-        "HOST": "LAPTOP-N7BO4IS4",
+        "HOST": "DESKTOP-1SHIPPI",
         "PORT": "",
         "OPTIONS": {"driver": "ODBC Driver 13 for SQL Server"},
     }
