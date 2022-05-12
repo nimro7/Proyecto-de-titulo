@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'Propalar.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'sql_server.pyodbc',
-        'NAME': 'proyecto_titulo',
+        'NAME': 'proyecto',
         "USER": "",
         "PASSWORD": "",
         "HOST": "DESKTOP-1SHIPPI",

@@ -37,18 +37,17 @@ def paginaLogin(request):
     return render(request, 'logins.html')
 
 def registroUsuario(request):
-    nickname=request.GET["nickname"]
-    contraseña=request.GET["contrasena"]
-    nombres=request.GET["Nombres"]
-    apellidos_pat=request.GET["appPaterno"]
-    apellido_mat=request.GET["appMater"]
-    correo=request.GET["correo"]
-    telefono=request.GET["telefono"]
+    nickname=request.GET.get("nickname")
+    contraseña=request.GET.get("contrasena")
+    nombres=request.GET.get("Nombres")
+    apellidos_pat=request.GET.get("appPaterno")
+    apellido_mat=request.GET.get("appMater")
+    correo=request.GET.get("correo")
+    telefono=request.GET.get("telefono")
     roll = 1
-    if len(nickname)>0:
-        us=usuarios(nickname=nickname,contraseña=contraseña,nombres=nombres,apellido_pat=apellidos_pat,apellido_mat=apellido_mat,correo=correo,telefono=telefono,roll=roll)
-        us.save()
-        mensaje="Usuario Registrado"
-    else:
-        mensaje="usuario no registrado"
+    us=usuarios(nickname,contraseña,nombres,apellidos_pat,apellido_mat,correo,telefono,roll)
+    us.save()
+    mensaje="Usuario Registrado"
+    
+    
     return HttpResponse(mensaje)
