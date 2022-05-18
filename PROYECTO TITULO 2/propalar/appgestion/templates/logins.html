@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet">
+    
+</head>
+<body class="bg-gradient-to-r from-red-500 to-purple-500">
+  {% include "navbar2.html" %}
+    <div class="h5-screen min-h-screen max-h-screen bg-gray-200 flex justify-center items-center p-4">
+        <div class="bg-white shadow w-full p-4 rounded shadow-2xl text-gray-700 sm:w-96">
+          <div class="flex justify-center">
+            <img src="{% static 'img/pw.jpg' %}" alt="" class="w-20">
+          </div>
+          <hr><hr><hr>
+          <p class="text-center pb-2 text-3xl">Bienvenidos a Propalar</p>
+          
+          <form action="/validar_login/">
+            <div>
+              <input type="text" name="nickname" id="nickname" placeholder="Nickname" class="w-full h-12 px-4 py-1 rounded-r-md border border-gray-100 text-gray-800 focus:outline-none">
+            </div>
+            <div>
+              <input type="password" name="contrasena" id="contrasena" placeholder="Contrasena" class="w-full h-12 px-4 py-1 rounded-r-md border border-gray-100 text-gray-800 focus:outline-none">
+            </div>
+            <div>
+              <button type="submit" class="bg-blue-500 p-2 w-full text-white rounded" > Iniciar Sesion </button>
+            </div>
+          </form>
+          
+          
+          {% if messages %}
+              {% for msg in messages %}
+              <b> {{msg}} </b>
+              {% endfor %}
+              {% endif %}
+          <hr>
+          
+          <div class="mt-8 relative flex justify-around">
+            <div class="bg-blue-800 h-12 w-12 flex justify-center items-center rounded-full text-white">
+              <i class="fab fa-facebook text-3xl"></i>
+            </div>
+            <div class="bg-blue-500 h-12 w-12 flex justify-center items-center rounded-full text-white">
+              <i class="fab fa-twitter text-3xl"></i>
+            </div>
+            
+             <div class="bg-red-500 h-12 w-12 flex justify-center items-center rounded-full text-white">
+              <i class="fab fa-google text-3xl"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="fixed bottom-0 right-0">
+        <button id="switchTheme">
+            <i classs="fab fa-codepen"></i>s
+        </button>
+      </div>
+
+
+    {% include "footer.html" %}
+</body>
+</html>
