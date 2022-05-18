@@ -8,20 +8,20 @@
   </head>
 <body class="bg-gradient-to-r from-red-500 to-purple-500">
     {% include "navbar.html" %}
-<div></div>
-  <div style="background: whitesmoke">
+
+<div style="background:whitesmoke">
     <h2 class="text-4xl font-bold px-5 mb-5 text-gray-700">
       Crea tu proyecto
     </h2>
     <h3 class="text-2xl mb-20 px-5 text-gray-700">
       Y comienza a darte a conocer!
     </h3>
-  </div>
+  
   <div class="flex justify-center" style="background:whitesmoke">
     
     
     
-    <div class="bg-white shadow w-full p-4 rounded shadow-2xl text-gray-700 sm:w-96">
+    <div class="justify-center bg-whitesmoke shadow w-full p-4 rounded shadow-2xl text-gray-700 sm:w-96">
       <div>
           <label for="small-input" class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">Nombre del Proyecto</label>
           <input type="text" id="small-input" class="block m-4  p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -48,10 +48,10 @@
               ease-in-out
               m-4
               focus:text-gray-900 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option selected>Selecciona tu Pais</option>
+                <option value="1">Chile</option>
+                <option value="2">Estados Unidos</option>
+                <option value="3">España</option>
             </select>
           </div>
         </div>
@@ -82,6 +82,7 @@
     </button>
       </div>
     </div>
+  </div>
 </div>
     {% include "footer.html" %}
   </body>
