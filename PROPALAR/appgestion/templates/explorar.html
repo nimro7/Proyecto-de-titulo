@@ -6,10 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body>
+  <body class=" bg-gradient-to-r from-red-500 to-purple-500">
     {% include "navbar.html" %}
+<div style="background:whitesmoke">
     
-    <div class="grid grid-cols-3 gap-4">
+
+    <div >
+        <h2 class="text-4xl">
+            Categorías
+          </h2>
+        <h3>Artes</h3>
+        <h3>Tecnología</h3>
+        <h3>Juegos</h3>
+        <h3>Literatura</h3>
+    
+
+    </div>
+    <div class="grid grid-cols-3 gap-4" >
 
     
         <div
@@ -129,6 +142,7 @@
         </div>
     </div>
     </div>
+</div>
 
     {% include "footer.html" %}
   </body>
