@@ -20,13 +20,15 @@ from appgestion import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('registro/', views.render_registro),
-    path('',views.render_registro),
+    path('',views.bienvenida),
     path('crear_usuario/',views.crear_usuario),
     path('login/', views.login),
     path('index/',views.index),
     path('inicioSesion/',views.inicioSesion),
     path('cerrarSesion/',views.cerrarSesion),
     path('perfil/',views.perfil),
-    
+    path('contacto/',views.contacto),
+    path('crear/',views.crear_proyecto),
+    path('bienvenida/',views.crear_proyecto),
 
 ]

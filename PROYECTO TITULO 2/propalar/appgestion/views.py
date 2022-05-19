@@ -15,6 +15,13 @@ def foter(request):
     return render(request,'footer.html')
 def index(request):
     return render(request,'index.html')
+def contacto(request):
+    return render(request,'contacto.html')
+def crear_proyecto(request):
+    return render(request,'crear.html')
+def bienvenida(request):
+    return render(request,'bienvenida.html')
+
 
 def crear_usuario(request):
     if request.method== "POST":

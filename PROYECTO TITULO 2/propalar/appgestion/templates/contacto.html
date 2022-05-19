@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body class="bg-gradient-to-r from-red-500 to-purple-500">
+    {% include "navbar.html" %}
+    <div style="background:whitesmoke">
+        <h2 class="text-4xl font-bold mb-5 text-gray-700">
+            Contacto
+          </h2>
+          <h3 class="text-2xl mb-20 text-gray-700">
+            En caso de cualquierda duda o consulta, rellena el siguiente formulario
+            y soporte se comunicará contigo lo antes posible.
+          </h3>
+        
+        <form action="" class="w-full max-w-lg">
+         <div class="text-center"> 
+             <label for="">Correo</label> 
+             <input type="email" name="email" class="block p-2.5 w-full text-sm m-4 text-gray-900  rounded-lg border border-gray-300 
+             focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
+              dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="tu@correo.com" />
+             </div>
+              <div class="text-center"> 
+                  <label for="">Asunto</label>
+                   <input type="text" name="asunto" class="block p-2.5 w-full text-sm m-4 text-gray-900  rounded-lg border border-gray-300 
+                   focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
+                    dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Asunto" /> 
+                </div>
+                     <div class="text-center">
+                          <label for="">Comentarios</label>
+                           <div>
+                            <textarea id="message" rows="4" class="block p-2.5 w-full text-sm m-4 text-gray-900  rounded-lg border border-gray-300 
+                            focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
+                             dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Comentarios"></textarea>
+                                </div> 
+                            </div> 
+                            <div class="text-center"> 
+                                <button class="text-center bg-blue-500 hover:bg-blue-400 mb-4 text-white 
+                                font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 
+                                rounded"> Enviar </button>
+                             </div> 
+        </form>
+        
+    </div>
+    {% include "footer.html" %}
+</body>
+</html>
