@@ -19,12 +19,13 @@
           <hr><hr><hr>
           <p class="text-center pb-2 text-3xl">Bienvenidos a Propalar</p>
           
-          <form action="/validar_login/">
+          <form action="/inicioSesion/" method="post">
+            {% csrf_token %}
             <div>
-              <input type="text" name="nickname" id="nickname" placeholder="Nickname" class="w-full h-12 px-4 py-1 rounded-r-md border border-gray-100 text-gray-800 focus:outline-none">
+              <input type="text" name="username" id="username" placeholder="Nickname" class="w-full h-12 px-4 py-1 rounded-r-md border border-gray-100 text-gray-800 focus:outline-none">
             </div>
             <div>
-              <input type="password" name="contrasena" id="contrasena" placeholder="Contrasena" class="w-full h-12 px-4 py-1 rounded-r-md border border-gray-100 text-gray-800 focus:outline-none">
+              <input type="password" name="pass1" id="pass1" placeholder="Contrasena" class="w-full h-12 px-4 py-1 rounded-r-md border border-gray-100 text-gray-800 focus:outline-none">
             </div>
             <div>
               <button type="submit" class="bg-blue-500 p-2 w-full text-white rounded" > Iniciar Sesion </button>

@@ -14,6 +14,7 @@
     {% include "navbar.html" %}
     <div style="background: whitesmoke">
       <div class="container mx-auto px-6 text-center">
+        {% if user.is_authenticated %}
         <h2 class="text-4xl font-bold mb-2 p-10 text-gray-700">
           Bienvenido a Propalar
         </h2>
@@ -21,7 +22,11 @@
           Revisa los siguientes proyectos, de los cuales puedes inspirarte o
           apoyarlos!
         </h3>
+        {% else %}
+        <h2> no estas logeado</h2>
+        {% endif %}
 
+        
         <button
           class="bg-white font-bold rounded-full py-4 px-8 mr-20 mt-20 shadow-lg uppercase tracking-wider"
         >

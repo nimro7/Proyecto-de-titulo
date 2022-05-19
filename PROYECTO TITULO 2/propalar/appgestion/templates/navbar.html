@@ -19,6 +19,7 @@
             <div class="flex space-x-4">
               <!-- logo -->
               <div>
+                {% if user.is_authenticated %}
                 <a  href="/index/" class="flex items-center py-5 px-2 text-gray-700 hover:text-gray-900">
                   {% comment %} <svg class="h-6 w-6 mr-1 text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
@@ -28,6 +29,17 @@
                   </svg>
                   <span class="font-bold text-white">Propalar</span>
                 </a>
+                {% else %}
+                <a  href="/" class="flex items-center py-5 px-2 text-gray-700 hover:text-gray-900">
+                  {% comment %} <svg class="h-6 w-6 mr-1 text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                  </svg> {% endcomment %}
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-1 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                  </svg>
+                  <span class="font-bold text-white">Propalar</span>
+                </a>
+                {% endif %}
               </div>
       
               <!-- primary nav -->
@@ -55,13 +67,18 @@
                 <a href="/crear/" class="py-5 px-3 text-white hover:text-gray-900">Crear proyecto</a>
               </div>
             </div>
-      
+            {% if user.is_authenticated %}
+            <div class="hidden md:flex items-center space-x-1">
+              <a href="/perfil/" class="py-5 px-3 text-white">Mi perfil</a>
+              <a href="/cerrarSesion/" class="py-5 px-3 text-white hover:text-gray-900">Cerrar sesión</a>
+            </div>
+            {% else %}
             <!-- secondary nav -->
             <div class="hidden md:flex items-center space-x-1">
               <a href="/login/" class="py-5 px-3 text-white">Unirse</a>
               <a href="/registro/" class="py-2 px-3 bg-yellow-500 hover:bg-yellow-300 text-indigo-600 hover:text-yellow-800 rounded transition duration-300">Registrarse</a>
             </div>
-    
+            {% endif %}
             <!-- mobile button goes here -->
             <div class="md:hidden flex items-center">
               <button class="mobile-menu-button">

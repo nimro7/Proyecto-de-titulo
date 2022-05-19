@@ -25,29 +25,24 @@
               {% endfor %}
               {% endif %}
           
-            <form action="/crear_usuario/" class="my-5">
+            <form action="/crear_usuario/" class="my-5" method="post">
+                {% csrf_token %}
+                <div>
+                    <input type="text" name="username" id="username" placeholder="Nickname" class="w-full h-12 px-4 py-1 rounded-r-md border border-gray-100 text-gray-800 focus:outline-none">
+                </div>
+                <div>
+                    <input type="password" name="pass1" id="pass1" placeholder="Contrasena" class="w-full h-12 px-4 py-1 rounded-r-md border border-gray-100 text-gray-800 focus:outline-none">
+                </div>
+                <div>
+                    <input type="text" name="email" id="email" placeholder="Correo" class="w-full h-12 px-4 py-1 rounded-r-md border border-gray-100 text-gray-800 focus:outline-none">
+                </div>
+                <div>
+                  <input type="text" name="fname" id="fname" placeholder="Nombres" class="w-full h-12 px-4 py-1 rounded-r-md border border-gray-100 text-gray-800 focus:outline-none">
+              </div>
+                <div>
+                    <input type="text" name="lname" id="lname" placeholder="Apellido Paterno" class="w-full h-12 px-4 py-1 rounded-r-md border border-gray-100 text-gray-800 focus:outline-none">
+                </div>
                 
-                <div>
-                    <input type="text" name="nickname" id="nickname" placeholder="Nickname" class="w-full h-12 px-4 py-1 rounded-r-md border border-gray-100 text-gray-800 focus:outline-none">
-                </div>
-                <div>
-                    <input type="text" name="contrasena" id="contrasena" placeholder="Contrasena" class="w-full h-12 px-4 py-1 rounded-r-md border border-gray-100 text-gray-800 focus:outline-none">
-                </div>
-                <div>
-                    <input type="text" name="Nombres" id="Nombres" placeholder="Nombres" class="w-full h-12 px-4 py-1 rounded-r-md border border-gray-100 text-gray-800 focus:outline-none">
-                </div>
-                <div>
-                    <input type="text" name="appPaterno" id="appPaterno" placeholder="Apellido Paterno" class="w-full h-12 px-4 py-1 rounded-r-md border border-gray-100 text-gray-800 focus:outline-none">
-                </div>
-                <div>
-                    <input type="text" name="appMater" id="appMater" placeholder="Apellido Materno" class="w-full h-12 px-4 py-1 rounded-r-md border border-gray-100 text-gray-800 focus:outline-none">
-                </div>
-                <div>
-                    <input type="text" name="correo" id="correo" placeholder="Correo" class="w-full h-12 px-4 py-1 rounded-r-md border border-gray-100 text-gray-800 focus:outline-none">
-                </div>
-                <div>
-                    <input type="text" name="telefono" id="telefono" placeholder="Telefono" class="w-full h-12 px-4 py-1 rounded-r-md border border-gray-100 text-gray-800 focus:outline-none">
-                </div>
                 <div>
                     <button type="submit" class="bg-blue-500 p-2 w-full text-white rounded" > Crear Usuario </button>
                 </div>
