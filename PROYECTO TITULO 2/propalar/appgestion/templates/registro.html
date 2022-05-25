@@ -28,29 +28,35 @@
             <form action="/crear_usuario/" class="my-5" method="post">
                 {% csrf_token %}
                 <div>
-                    <input type="text" name="username" id="username" placeholder="Nickname" class="w-full h-12 px-4 py-1 rounded-r-md border border-gray-100 text-gray-800 focus:outline-none">
+                    <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Username</label>
+                    <input type="text" name="username" id="username" placeholder="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                 </div>
                 <div>
-                    <input type="password" name="pass1" id="pass1" placeholder="Contrasena" class="w-full h-12 px-4 py-1 rounded-r-md border border-gray-100 text-gray-800 focus:outline-none">
+                    <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Contraseña</label>
+                    <input type="password" name="pass1" id="pass1" placeholder="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                 </div>
                 <div>
-                    <input type="text" name="email" id="email" placeholder="Correo" class="w-full h-12 px-4 py-1 rounded-r-md border border-gray-100 text-gray-800 focus:outline-none">
+                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Correo</label>
+                    <input type="text" name="email" id="email" placeholder="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                 </div>
                 <div>
-                  <input type="text" name="fname" id="fname" placeholder="Nombres" class="w-full h-12 px-4 py-1 rounded-r-md border border-gray-100 text-gray-800 focus:outline-none">
+                  <label for="nombres" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Nombres</label>
+                  <input type="text" name="fname" id="fname" placeholder="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
               </div>
                 <div>
-                    <input type="text" name="lname" id="lname" placeholder="Apellido Paterno" class="w-full h-12 px-4 py-1 rounded-r-md border border-gray-100 text-gray-800 focus:outline-none">
+                    <label for="apellido" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Apellido Paterno</label>
+                    <input type="text" name="lname" id="lname" placeholder="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                 </div>
-                
+                <br>
                 <div>
-                    <button type="submit" class="bg-blue-500 p-2 w-full text-white rounded" > Crear Usuario </button>
+                  <button type="submit" class="w-full text-white bg-red-500 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Crear cuenta</button>
                 </div>
                 
                 
             </form>
-            <div class="flex justify-center">
-              <a href="/login/" class="bg-gray-500 p-2 w-full text-white rounded" >Ya tienes cuenta? Iniciar</a>
+            <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
+              <a>Ya tienes cuenta?</a>
+              <a href="/login/" class="text-blue-700 hover:underline dark:text-blue-500" >Iniciar aqui</a>
             </div>
             
           
