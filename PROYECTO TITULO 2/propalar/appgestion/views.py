@@ -77,14 +77,19 @@ def contactar(request):
         asunto = request.POST['asunto']
         comentarios = request.POST['textarea']
         if len(correo)>0 and len(asunto)>0 and len(comentarios)>0:
-            CC = Contacto(correo=correo,asunto=asunto,comentarios=comentarios)
-            CC.save()
-            messages.success(request,"Se a enviado su consulta con el asunto :"+  request.POST['asunto'])
+            if len(correo)<51 and len(asunto)<51 and len(comentarios)<201:
+                CC = Contacto(correo=correo,asunto=asunto,comentarios=comentarios)
+                CC.save()
+                messages.success(request,"Se a enviado su consulta con el asunto :  "+  request.POST['asunto'])
+            else:
+                messages.success(request,"Los campos exceden el maximo de caracteres permitido") 
         else:
             messages.success(request,"Faltan ingresar campos")
     except Exception as e:
         messages.success(request,"error inesperado")
     return render(request,'contacto.html')
+
+
 
 
     
