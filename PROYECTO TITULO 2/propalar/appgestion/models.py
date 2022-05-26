@@ -104,6 +104,18 @@ class Transsaccion(models.Model):
     monto = models.FloatField()
     id_proyecto = models.ForeignKey(Proyecto, on_delete=models.CASCADE)
 
+class Proyecto2(models.Model):
+    
+    titulo = models.CharField(max_length=50 , primary_key=True)
+    sub_titulo = models.CharField(max_length=50, null = True)
+    cuerpo = models.CharField(max_length=3000)
+    monto_meta = models.FloatField(null = True)
+    monto_recauda = models.FloatField(null = True)
+    nombre_tipo = models.ForeignKey(Proyecto, on_delete=models.CASCADE)
+
+class Tipo_proyecto2(models.Model):
+    nombre_tipo  = models.CharField(max_length=50)
+    
 
 
 
