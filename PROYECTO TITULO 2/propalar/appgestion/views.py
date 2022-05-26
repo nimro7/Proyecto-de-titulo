@@ -70,7 +70,21 @@ def cerrarSesion(request):
     return redirect('/login/')
 
 
-
+def contactar(request):
+    
+    try:
+        correo = request.POST['correo']
+        asunto = request.POST['asunto']
+        comentarios = request.POST['textarea']
+        if len(correo)>0 and len(asunto)>0 and len(comentarios)>0:
+            CC = Contacto(correo=correo,asunto=asunto,comentarios=comentarios)
+            CC.save()
+            messages.success(request,"Se a enviado su consulta con el asunto :"+  request.POST['asunto'])
+        else:
+            messages.success(request,"Faltan ingresar campos")
+    except Exception as e:
+        messages.success(request,"error inesperado")
+    return render(request,'contacto.html')
 
 
     

@@ -30,5 +30,6 @@ urlpatterns = [
     path('contacto/',views.contacto),
     path('crear/',views.crear_proyecto),
     path('bienvenida/',views.crear_proyecto),
+    path('contactar/',views.contactar),
 
 ]
