@@ -52,8 +52,8 @@ class Tipo_solicitud(models.Model):
     nombre_cat = models.CharField(max_length=50)
 
 class Proyecto(models.Model):
-    id_proyecto = models.AutoField(primary_key= True)
-    titulo = models.CharField(max_length=50)
+    
+    titulo = models.CharField(max_length=50 , primary_key=True)
     sub_titulo = models.CharField(max_length=50, null = True)
     cuerpo = models.CharField(max_length=3000)
     monto_meta = models.FloatField(null = True)
@@ -62,7 +62,7 @@ class Proyecto(models.Model):
 class Tipo_proyecto(models.Model):
     id_tipo_pro =  models.AutoField(primary_key= True)
     nombre_tipo  = models.CharField(max_length=50)
-    id_proyecto = models.ForeignKey(Proyecto, on_delete=models.CASCADE)
+    titulo = models.ForeignKey(Proyecto, on_delete=models.CASCADE)
 
 class Benefio_pro(models.Model):
     id_benef = models.AutoField(primary_key= True)

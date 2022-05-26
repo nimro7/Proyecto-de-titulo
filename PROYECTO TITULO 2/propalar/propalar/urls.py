@@ -31,5 +31,6 @@ urlpatterns = [
     path('crear/',views.crear_proyecto),
     path('bienvenida/',views.crear_proyecto),
     path('contactar/',views.contactar),
+    path('crear_proyecto/',views.crear_proyecto),
 
 ]

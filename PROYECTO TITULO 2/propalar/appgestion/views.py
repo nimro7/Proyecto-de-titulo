@@ -4,7 +4,7 @@ from django.http import Http404
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as loginn, logout
 from django.contrib import messages
-from appgestion.models import Contacto
+from appgestion.models import Contacto ,Proyecto ,Tipo_proyecto
 # Create your views here.
 def render_registro(request):
     return render(request,'registro.html')
@@ -71,7 +71,6 @@ def cerrarSesion(request):
 
 
 def contactar(request):
-    
     try:
         correo = request.POST['correo']
         asunto = request.POST['asunto']
@@ -88,6 +87,29 @@ def contactar(request):
     except Exception as e:
         messages.success(request,"error inesperado")
     return render(request,'contacto.html')
+
+def crear_proyecto(request):
+    try:
+        titulo = request.POST['titulo']
+        sub_titulo = request.POST['sub_titulo']
+        cuerpo = request.POST['textarea_descrip']
+        monto_meta = request.POST['monto_meta']
+        monto_recauda = 0
+        nombre_tipo = request.POST['combo_box']
+        if len(titulo)>0 and len(sub_titulo)>0 and len(cuerpo)>0 and len(monto_meta)>0:
+            pro = Proyecto(titulo=titulo,sub_titulo=sub_titulo,cuerpo=cuerpo,monto_meta=monto_meta,monto_recauda=monto_recauda)
+            pro.save()
+            tipo_pro = Tipo_proyecto(nombre_tipo=nombre_tipo,id_proyecto=titulo)
+            tipo_pro.save()
+            messages.success(request,"Se ha creado el Proyecto")
+            
+        else:
+            messages.success(request,"Debe rellenar todos los campos")
+    except Exception as e:
+        messages.success(request,"error inesperado")
+    return render(request,'crear.html')
+    
+
 
 
 
