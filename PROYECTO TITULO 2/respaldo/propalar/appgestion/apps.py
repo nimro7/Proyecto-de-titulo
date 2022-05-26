@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class PropalarConfig(AppConfig):
+class AppgestionConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'propalar'
+    name = 'appgestion'
