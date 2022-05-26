@@ -18,6 +18,11 @@
     <h2 class="text-xl mb-5 pb-2 text-left ml-40 text-gray-500">
       Completa los siguientes campos.
     </h2>
+    {% if messages %}
+      {% for msg in messages %}
+        <b> {{msg}} </b>
+        {% endfor %}
+        {% endif %}
     
     <form action="/crear_proyecto/" method="post">
       {% csrf_token %}
