@@ -9,38 +9,50 @@
 <body class="bg-gradient-to-r from-red-500 to-purple-500">
     {% include "navbar.html" %}
     <div style="background:whitesmoke">
-        <h2 class="text-4xl font-bold text-center p-5 mb-5 text-gray-700">
-            Contacto
-        </h2>
-        <h3 class="text-2xl mb-20 p-2.5 text-center text-gray-700">
-            En caso de cualquierda duda o consulta, rellena el siguiente formulario
-            y soporte se comunicará contigo lo antes posible.
-        </h3>
-        <div class="text-4xl font-bold text-center p-5 mb-5 text-gray-700">
-            {% if messages %}
-                {% for msg in messages %}
-                <b> {{msg}} </b>
-                {% endfor %}
-                {% endif %}
-        </div>
-        <form action="/contactar/" class="w-full pl-40 max-w-lg text-center" method="post">
+        <h1 class="text-4xl font-bold pl-20 pt-20 mb-5 text-gray-700">
+            ¿Como podemos ayudarte?
+        </h1>
+        
+        
+        
+        <form action="/contactar/" class="w-full pl-20 max-w-lg text-center" method="post">
             {% csrf_token %}
-            <div class="text-center"> 
-                <label for="">Correo</label> 
-                <input type="email" name="correo" id="correo" class="block p-2.5 w-full text-sm m-4 text-gray-900  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-whitedark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Correo"  >
+            <div class="mb-3 w-full xl:w-96 text-left">
+                <label for="small-input" class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">¿Con qué necesitas ayuda?</label>
+                <select id="combo_box" name="combo_box" class="form-select appearance-none
+                  block
+                  w-full
+                  px-3
+                  py-1.5
+                  text-base
+                  font-normal
+                  text-gray-900
+                  bg-gray-50 bg-clip-padding bg-no-repeat
+                  border border-solid border-gray-300
+                  rounded
+                  transition
+                  ease-in-out
+                  m-4
+                  focus:text-gray-900 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+                    <option selected>-</option>
+                    <option value=>Un proyecto que gestiono o que creé</option>
+                    <option value=>Un proyecto que patrociné</option>
+                    <option value=>Tengo una pregunta general para Propalar</option>
+                </select>
+              </div>
+            <div class="text-left"> 
+                <label for="small-input" class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">Correo</label> 
+                <input type="email" name="correo" id="correo" class="block p-2.5 w-full text-sm m-4 pl-20 text-gray-900  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-whitedark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder=""  >
             </div>
-            <div class="text-center"> 
-                <label for="">Asunto</label>
-                <input type="text" id="asunto" name="asunto" class="block p-2.5 w-full text-sm m-4 text-gray-900  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-whitedark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Asunto" /> 
-            </div>
-            <div class="text-center">
-                <label for="">Comentarios</label>
+            <div class="text-left">
+                <label for="small-input" class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">Comentarios</label>
             <div>
-            <textarea id="message" rows="4"  placeholder="Comentarios" name="textarea" itemid="textarea" class="block p-2.5 w-full text-sm m-4 text-gray-900  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-whitedark:focus:ring-blue-500 dark:focus:border-blue-500" ></textarea>
-            </div> 
+            <textarea id="message" rows="4"  placeholder="" name="textarea" itemid="textarea" class="block pb-2 w-full text-sm m-3 text-gray-900  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-whitedark:focus:ring-blue-500 dark:focus:border-blue-500" ></textarea>
+            </div>
+            <label for="" class=" text-left block mb-2 text-sm m-4 font-medium text-gray-500 dark:text-gray-300">Ingresa los detalles de tu solicitud. Un miembro de nuestro personal de atención al cliente responderá lo antes posible.</label>
                             
-            <div class="text-center"> 
-                <button class="text-center bg-red-500 hover:bg-red-800 mb-4 text-white font-bold py-2 px-4 border-b-4 border-red-500 hover:border-red-800 rounded" type="submit"> Enviar </button>
+            <div class="text-left"> 
+                <button class="text-center bg-red-500 hover:bg-red-800 mb-4 ml-5 text-white font-bold py-2 px-10 border-b-4 border-red-500 hover:border-red-800 rounded" type="submit"> Enviar </button>
             </div> 
         </form>
         

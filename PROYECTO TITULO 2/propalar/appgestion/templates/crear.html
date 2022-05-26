@@ -9,42 +9,36 @@
 <body class="bg-gradient-to-r from-red-500 to-purple-500">
   {% include "navbar.html" %}
   <div style="background:whitesmoke">  
-    <h2 class="text-4xl font-bold px-5 mb-5 text-center p-5 text-gray-700">
+    <h2 class="text-3xl font-bold pt-10 ml-40 text-left text-gray-700">
       Crea tu proyecto
     </h2>
-    <h2 class="text-2xl mb-20 px-5 text-center text-gray-700">
-      Y comienza a darte a conocer!
+    <h2 class="text-2xl  pb-5 text-left ml-40 text-gray-700">
+      Comienza a darte a conocer!
     </h2>
-    <h2 class="text-2xl mb-20 px-5 text-center text-gray-700">
+    <h2 class="text-xl mb-5 pb-2 text-left ml-40 text-gray-500">
       Completa los siguientes campos.
     </h2>
-    <div class="text-4xl font-bold text-center p-5 mb-5 text-gray-700">
-      {% if messages %}
-          {% for msg in messages %}
-          <b> {{msg}} </b>
-          {% endfor %}
-          {% endif %}
-    </div>
+    
     <form action="/crear_proyecto/" method="post">
       {% csrf_token %}
       <div class="flex">
         <!-- inicio inputs tabla proyecto-->
-        <div class="w-1/2">
-          <div class="pl-10">
+        <div class="pl-20">
+          <div class="pl-20">
             <div>
               <label for="small-input" 
               class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">Titulo del Proyecto</label>
-              <input type="text" id="titulo" name="titulo" class="block m-4  text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <input type="text" id="titulo" name="titulo" class="block p-2.5 w-full text-sm m-4 pl-20 text-gray-900  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-whitedark:focus:ring-blue-500 dark:focus:border-blue-500">
             </div>
             <div>
               <label for="small-input" 
               class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">Subtitulo del Proyecto</label>
-              <input type="text" id="sub_titulo" name="sub_titulo" class="block  m-4  text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <input type="text" id="sub_titulo" name="sub_titulo" class="block p-2.5 w-full text-sm m-4 pl-20 text-gray-900  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-whitedark:focus:ring-blue-500 dark:focus:border-blue-500">
             </div>
             <div>
               <Label for="small-input"
                class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">Descripccion del proyecto</Label>
-              <textarea id="textarea_descrip" name="textarea_descrip" rows="4" class="block p-2.5 m-4 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Descripcion..."></textarea>
+              <textarea id="textarea_descrip" name="textarea_descrip" rows="4" style="width: 400px;" class="block p-2.5 w-full text-sm m-4 pl-20 text-gray-900  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-whitedark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Descripcion..."></textarea>
             </div>
             <div>
             <label for="small-input" 
@@ -55,7 +49,7 @@
         </div>
         <!-- inicio inputs tipo_proyecto y equipo de trabajo-->
         <div class="w-1/2">
-          <div class="pl-10">
+          <div class="pl-20">
             <div class="mb-3 xl:w-96">
               <label for="small-input" class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">Tipo de Proyecto</label>
               <select id="combo_box" name="combo_box" class="form-select appearance-none
@@ -64,8 +58,8 @@
                 px-3
                 py-1.5
                 text-base
-                font-normal
-                text-gray-900
+                font-medium
+                text-gray-600
                 bg-gray-50 bg-clip-padding bg-no-repeat
                 border border-solid border-gray-300
                 rounded
@@ -87,8 +81,8 @@
 
 
       </div>
-      <div>
-        <button type="submit" class="text-white bg-red-500 hover:bg-red-800 m-4 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Crear</button>
+      <div class="text-left ml-40">
+        <button type="submit" class="text-center bg-red-500 hover:bg-red-800 mb-4 ml-5 text-white font-bold py-2 px-10 border-b-4 border-red-500 hover:border-red-800 rounded">Crear</button>
       </div>
     </form>
 
