@@ -1,16 +1,22 @@
+from tkinter import CASCADE
+from urllib.request import CacheFTPHandler
+from django.conf import settings
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractBaseUser
 
 # Create your models here.
-class Usuarios(models.Model):
+class Usuarios(AbstractBaseUser):
     id_usuario = models.AutoField(primary_key= True)
-    nickname = models.CharField(max_length=50)
-    contrasena = models.CharField(max_length=50)
+    nickname = models.CharField(max_length=50, unique=True)
     nombres = models.CharField(max_length=50, null = True)
     apellidos_pat = models.CharField(max_length=50, null = True)
     apellido_mat = models.CharField(max_length=50, null = True)
     correo = models.CharField(max_length=50, null = True)
     telefono = models.CharField(max_length=12, null = True)
+    USERNAME_FIELD = 'nickname'
+    REQUIRED_FIELDS: list[nombres, apellidos_pat, apellido_mat, correo, telefono]
+    def __str__(self):
+        return self.nickname
 
 class Datos_banco(models.Model):
     id_banco = models.AutoField(primary_key= True)
@@ -52,7 +58,7 @@ class Tipo_solicitud(models.Model):
     nombre_cat = models.CharField(max_length=50)
 
 class Proyecto(models.Model):
-    
+    usuario = models.ForeignKey(Usuarios, on_delete=models.CASCADE,)
     titulo = models.CharField(max_length=50 , primary_key=True)
     sub_titulo = models.CharField(max_length=50, null = True)
     cuerpo = models.CharField(max_length=3000)
