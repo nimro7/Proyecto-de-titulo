@@ -61,6 +61,8 @@ class Projecto5(models.Model):
     imagen = models.ImageField(upload_to='propalar')
     created_at = models.DateTimeField(auto_now_add=True)
     upload_to= models.DateTimeField(auto_now=True)
+    monto_meta = models.IntegerField()
+    monto_total = models.IntegerField(default=0)
 
 class Beneficio(models.Model):
     project = models.ForeignKey(Projecto5, blank=True , null=True , on_delete=models.CASCADE)
@@ -78,10 +80,12 @@ class EquipoTrabajo(models.Model):
 
 class materiales(models.Model):
     project = models.ForeignKey(Projecto5, blank=True , null=True , on_delete=models.CASCADE)
-    facebook = models.CharField(max_length=50)
-    instagram = models.CharField(max_length=50)
-    paginaWeb = models.CharField(max_length=50)
-    twitter = models.CharField(max_length=50)
+    facebook = models.CharField(max_length=50,blank=True)
+    instagram = models.CharField(max_length=50,blank=True)
+    paginaWeb = models.CharField(max_length=50,blank=True)
+    twitter = models.CharField(max_length=50,blank=True)
+
+
 
 
 
