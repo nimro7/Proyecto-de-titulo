@@ -1,5 +1,7 @@
 from django.db import models
-
+from django.contrib.auth.models import User
+from froala_editor.fields import FroalaField
+from .helpers import *
 # Create your models here.
 class Contacto(models.Model):
     id_comen =  models.AutoField(primary_key= True)
@@ -7,10 +9,7 @@ class Contacto(models.Model):
     asunto = models.CharField(max_length=50)
     comentarios = models.CharField(max_length=200)
 
-from django.db import models
-from django.contrib.auth.models import User
-from froala_editor.fields import FroalaField
-from .helpers import *
+
 
 # Create your models here.
 
