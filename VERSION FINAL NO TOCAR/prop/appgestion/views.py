@@ -7,6 +7,7 @@ from django.http import Http404
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as loginn, logout
 from django.contrib import messages
+from .form import *
 # Create your views here.
 def render_registro(request):
     return render(request,'registro.html')
@@ -20,8 +21,7 @@ def index(request):
     return render(request,'index.html')
 def contacto(request):
     return render(request,'contacto.html')
-def crear_proyecto(request):
-    return render(request,'crear.html')
+
 def bienvenida(request):
     return render(request,'bienvenida.html')
 
@@ -69,3 +69,5 @@ def cerrarSesion(request):
     logout(request)
     messages.success(request, "Sesión cerrada")
     return redirect('/login/')
+
+def crear_proyecto()

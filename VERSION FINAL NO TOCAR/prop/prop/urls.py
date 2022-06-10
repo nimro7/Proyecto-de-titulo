@@ -31,7 +31,6 @@ urlpatterns = [
     path('cerrarSesion/',views.cerrarSesion),
     path('perfil/',views.perfil),
     path('contacto/',views.contacto),
-    path('crear/',views.crear_proyecto),
     path('bienvenida/',views.crear_proyecto),
     path('crear_proyecto/',views.crear_proyecto),
     path('froala_editor/',include('froala_editor.urls')),

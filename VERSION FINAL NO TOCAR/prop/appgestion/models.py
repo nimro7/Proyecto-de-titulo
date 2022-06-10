@@ -1,7 +1,11 @@
+from operator import truediv
+from pickle import TRUE
+from pyexpat import model
 from django.db import models
 from django.contrib.auth.models import User
+from django.forms import ImageField
 from froala_editor.fields import FroalaField
-from .helpers import *
+from .helpers import generate_slug
 # Create your models here.
 class Contacto(models.Model):
     id_comen =  models.AutoField(primary_key= True)
@@ -10,15 +14,12 @@ class Contacto(models.Model):
     comentarios = models.CharField(max_length=200)
 
 
-
-# Create your models here.
-
-class Tipos(models.Model):
-    categoria = models.CharField(max_length=50, primary_key=True)
+class Categoria(models.Model):
+    categoria = models.CharField(max_length=50)
 
 class Projecto5(models.Model):
     user = models.ForeignKey(User, blank=True , null=True , on_delete=models.CASCADE)
-    categoria =models.ForeignKey(Tipos, blank=True , null=True , on_delete=models.CASCADE)
+    categoria =models.ForeignKey(Categoria, blank=True , null=True , on_delete=models.CASCADE)
     titulo = models.CharField(max_length=50)
     contenido = FroalaField()
     slug = models.SlugField(max_length=1000, null=True, blank=True)

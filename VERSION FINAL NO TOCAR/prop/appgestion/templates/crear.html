@@ -18,78 +18,93 @@
     <h2 class="text-xl mb-5 pb-2 text-left ml-40 text-gray-500">
       Completa los siguientes campos.
     </h2>
-    {% if messages %}
-      {% for msg in messages %}
-        <b> {{msg}} </b>
-        {% endfor %}
-        {% endif %}
     
-    <form action="/crear_proyecto/" method="post">
+    
+    <form method="post" class="mt-5 pt-5 mb-5 pb-5" enctype="multipart/form-data">
       {% csrf_token %}
-      <div class="flex">
-        <!-- inicio inputs tabla proyecto-->
-        <div class="pl-20">
-          <div class="pl-20">
-            <div>
-              <label for="small-input" 
-              class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">Titulo del Proyecto</label>
-              <input type="text" id="titulo" name="titulo" class="block p-2.5 w-full text-sm m-4 pl-20 text-gray-900  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-whitedark:focus:ring-blue-500 dark:focus:border-blue-500">
-            </div>
-            <div>
-              <label for="small-input" 
-              class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">Subtitulo del Proyecto</label>
-              <input type="text" id="sub_titulo" name="sub_titulo" class="block p-2.5 w-full text-sm m-4 pl-20 text-gray-900  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-whitedark:focus:ring-blue-500 dark:focus:border-blue-500">
-            </div>
-            <div>
-              <Label for="small-input"
-               class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">Descripccion del proyecto</Label>
-              <textarea id="textarea_descrip" name="textarea_descrip" rows="4" style="width: 400px;" class="block p-2.5 w-full text-sm m-4 pl-20 text-gray-900  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-whitedark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Descripcion..."></textarea>
-            </div>
-            <div>
-            <label for="small-input" 
-            class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">Monto meta</label>
-            <input type="number" id="monto_meta" name="monto_meta" class="block  m-4  text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-            </div>
+      <div class="row">
+          <div class="col-md-12">
+            <label for="">Categoria</label>
+            <input type="text" class="form-control" placeholder="categoria" name="categoria">
           </div>
-        </div>
-        <!-- inicio inputs tipo_proyecto y equipo de trabajo-->
-        <div class="w-1/2">
-          <div class="pl-20">
-            <div class="mb-3 xl:w-96">
-              <label for="small-input" class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">Tipo de Proyecto</label>
-              <select id="combo_box" name="combo_box" class="form-select appearance-none
-                block
-                w-full
-                px-3
-                py-1.5
-                text-base
-                font-medium
-                text-gray-600
-                bg-gray-50 bg-clip-padding bg-no-repeat
-                border border-solid border-gray-300
-                rounded
-                transition
-                ease-in-out
-                m-4
-                focus:text-gray-900 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
-                  <option selected>Seleccionar categoria</option>
-                  <option value="Videojuegos">Videojuegos</option>
-                  <option value="Agricultura">Agricultura</option>
-                  <option value="Animacion">Animacion</option>
-                  <option value="Gastronomia">Gastronomia</option>
-                  <option value="Otros">Otros</option>
-              </select>
-            </div>
+          <div class="col-md-12">
+              <label>Enter blog title</label>
+              <input type="text" class="form-control" placeholder="Enter title" name="titulo">
           </div>
-        </div>
+          
+          <div class="col-md-12">
+              {{form.media}}
+              {{form.as_p}}
+          </div>
 
+          <div class="col-md-12">
+
+            <input type="file" name="imagen" class="form-control" >
+          </div>
+          <div class="col-md-12">
+            <label for="">Monto a recaudar</label>
+            <input type="number" class="form-control" placeholder="Enter title" name="monto_recaudar">
+          </div>
+          <div class="col-md-12">
+            <label for="">Categoria Benficio</label>
+            <input type="text" class="form-control" placeholder="Categoria Benficio" name="categoria_beneficio">
+
+          </div>
+          <div class="col-md-12">
+            <label for="">Nombre Benficio</label>
+            <input type="text" class="form-control" placeholder="Nombre Benficio" name="nombre_beneficio">
+
+          </div>
+          <div class="col-md-12">
+            <label for="">Descripcion Benficio</label>
+            <input type="text" class="form-control" placeholder="Descripcion Benficio" name="descripcion_beneficio">
+          </div>
+          <div class="col-md-12">
+            <label for="">Empresa</label>
+            <input type="text" class="form-control" placeholder="Empresa" name="empresa">
+          </div>
+          <div class="col-md-12">
+            <label for="">Descripcion Empresa</label>
+            <input type="text" class="form-control" placeholder="Descripcion Empresa" name="Descripcion_Empresa">
+          </div>
+          <div class="col-md-12">
+            <label for="">Nombre Jefe Proyecto</label>
+            <input type="text" class="form-control" placeholder="Nombre Jefe Proyecto" name="jefe_proyecto">
+          </div>
+          <div class="col-md-12">
+            <label for="">Nombre subJefe Proyecto</label>
+            <input type="text" class="form-control" placeholder="Nombre subJefe Proyecto" name="subjefe_proyecto">
+          </div>
+          <div class="col-md-12">
+            <label for="">Nombre subSubJefe Proyecto</label>
+            <input type="text" class="form-control" placeholder="Nombre subSubJefe Proyecto" name="subSubjefe_proyecto">
+          </div>
+          <div class="col-md-12">
+            <label for="">Facebook</label>
+            <input type="text" class="form-control" placeholder="Facebook" name="Facebook">
+          </div>
+          <div class="col-md-12">
+            <label for="">Instagram</label>
+            <input type="text" class="form-control" placeholder="Instagram" name="Instagram">
+          </div>
+          <div class="col-md-12">
+            <label for="">paginaWeb</label>
+            <input type="text" class="form-control" placeholder="paginaWeb" name="paginaWeb">
+          </div>
+          <div class="col-md-12">
+            <label for="">twitter</label>
+            <input type="text" class="form-control" placeholder="twitter" name="twitter">
+          </div>
+          
 
 
       </div>
-      <div class="text-left ml-40">
-        <button type="submit" class="text-center bg-red-500 hover:bg-red-800 mb-4 ml-5 text-white font-bold py-2 px-10 border-b-4 border-red-500 hover:border-red-800 rounded">Crear</button>
-      </div>
-    </form>
+
+      <button type="submit" class="btn btn-primary mt-4">Create Blog</button>
+
+  </form>
+
+</div> 
 
 
 
