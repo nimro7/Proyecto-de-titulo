@@ -1,4 +1,3 @@
-pip install froala_editor
+pip install django-froala-editor
 pip install pillow
-pip install 
 pip install djangorestframework

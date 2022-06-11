@@ -72,4 +72,4 @@ def cerrarSesion(request):
 
 def crear_proyecto(request):
     context = {'form' :Projecto5Form}
-    return render(request,'crear.html')
+    return render(request,'crear.html',context)
