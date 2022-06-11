@@ -70,4 +70,6 @@ def cerrarSesion(request):
     messages.success(request, "Sesión cerrada")
     return redirect('/login/')
 
-def crear_proyecto()
+def crear_proyecto(request):
+    context = {'form' :Projecto5Form}
+    return render(request,'crear.html')
