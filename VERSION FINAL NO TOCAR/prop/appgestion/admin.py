@@ -1,6 +1,6 @@
 from django.contrib import admin
-from appgestion.models import Contacto , Categoria , Projecto5 , Beneficio,EquipoTrabajo,materiales
-admin.site.register(Categoria)
+from appgestion.models import Contacto , Projecto5 , Beneficio,EquipoTrabajo,materiales
+
 admin.site.register(Projecto5)
 admin.site.register(Beneficio)
 admin.site.register(EquipoTrabajo)

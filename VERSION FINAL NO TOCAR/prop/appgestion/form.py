@@ -7,8 +7,6 @@ class Projecto5Form(forms.ModelForm):
     class Meta:
         model = Projecto5
         fields = ['contenido']
-        model1 = Categoria
-        fields1 = ['contenido']
         model2 = Beneficio
         fields2 = ['contenido']
         model3 = EquipoTrabajo

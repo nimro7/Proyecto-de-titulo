@@ -14,12 +14,11 @@ class Contacto(models.Model):
     comentarios = models.CharField(max_length=200)
 
 
-class Categoria(models.Model):
-    categoria = models.CharField(max_length=50)
+
 
 class Projecto5(models.Model):
     user = models.ForeignKey(User, blank=True , null=True , on_delete=models.CASCADE)
-    categoria =models.ForeignKey(Categoria, blank=True , null=True , on_delete=models.CASCADE)
+    categoria = models.CharField(max_length=50)
     titulo = models.CharField(max_length=50)
     contenido = FroalaField()
     slug = models.SlugField(max_length=1000, null=True, blank=True)
