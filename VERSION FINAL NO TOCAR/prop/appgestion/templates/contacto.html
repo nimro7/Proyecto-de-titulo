@@ -20,7 +20,7 @@
         
         
         
-        <form action="/contactar/" class="w-full pl-20 max-w-lg text-center" method="post">
+        <form action="/contacto/" class="w-full pl-20 max-w-lg text-center" method="post">
             {% csrf_token %}
             <div class="mb-3 w-full xl:w-96 text-left">
                 <label for="small-input" class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">¿Con qué necesitas ayuda?</label>
@@ -40,9 +40,9 @@
                   m-4
                   focus:text-gray-900 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
                     <option selected>-</option>
-                    <option value=>Un proyecto que gestiono o que creé</option>
-                    <option value=>Un proyecto que patrociné</option>
-                    <option value=>Tengo una pregunta general para Propalar</option>
+                    <option value='1'>Un proyecto que gestiono o que creé</option>
+                    <option value='2'>Un proyecto que patrociné</option>
+                    <option value='3'>Tengo una pregunta general para Propalar</option>
                 </select>
               </div>
             <div class="text-left"> 
