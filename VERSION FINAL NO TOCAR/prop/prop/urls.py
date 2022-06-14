@@ -35,6 +35,7 @@ urlpatterns = [
     path('bienvenida/',views.crear_proyecto),
     path('crear_proyecto/',views.crear_proyecto),
     path('froala_editor/',include('froala_editor.urls')),
+    path('administrar/',views.administrar_proyecto),
 
     path('password_change/done/', auth_views.PasswordChangeDoneView.as_view(template_name='password_reset/password_change_done.html'), 
         name='password_change_done'),

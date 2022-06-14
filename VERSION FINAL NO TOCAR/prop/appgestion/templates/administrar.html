@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=, initial-scale=1.0">
+  <title>Bienvenida</title>
+  <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Google fonts - Playfair Display-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700">
+  <!-- Google fonts - Poppins-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,400i,700">
+</head>
+<body class="bg-gradient-to-r text-center from-red-500 to-purple-500">
+
+  {% include "navbar.html" %}
+  <section class="mt-5 pt-5">
+    <div class="container" style="background-color: whitesmoke;">
+       
+        <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Blog title</th>
+            <th scope="col">Created at</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for proyecto in projecto5_objs %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{proyecto.titulo}}</td>
+            <td>{{proyecto.created_at}}</td>
+            <td>
+                <a href="#" class="btn btn-success">Update</a>
+                <a href="#" class="btn btn-danger">Delete</a>
+
+
+            </td>
+          </tr>
+          {% endfor %}
+         
+
+          </tbody>
+          </table>
+          
+    </div>
+</section>
+  {% include "footer.html" %}
+
+</body>
+
+</html>

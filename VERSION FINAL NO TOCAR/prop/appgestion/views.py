@@ -87,6 +87,8 @@ def cerrarSesion(request):
     return redirect('/login/')
 
 def crear_proyecto(request):
+
+
     context = {'form' :Projecto5Form}
     try:
         if request.method == 'POST':
@@ -149,3 +151,23 @@ def crear_proyecto(request):
     
     return render(request , 'crear.html' , context)
     
+def administrar_proyecto(request):
+    context = {}
+    
+    try:
+        projecto5_objs = Projecto5.objects.filter(user = request.user)
+        context['projecto5_objs'] =  projecto5_objs
+    except Exception as e: 
+        print(e)
+    
+    print(context)
+    return render(request , 'administrar.html' ,context)
+
+def proyecto_detalle(request , slug):
+    context = {}
+    try:
+        proyecto_obj = Projecto5.objects.filter(slug = slug).first()
+        context['proyecto_obj'] =  proyecto_obj
+    except Exception as e:
+        print(e)
+    return render(request , 'proyecto_detalle.html' , context)
