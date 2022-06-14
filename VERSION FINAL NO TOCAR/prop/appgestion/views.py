@@ -171,3 +171,7 @@ def proyecto_detalle(request , slug):
     except Exception as e:
         print(e)
     return render(request , 'proyecto_detalle.html' , context)
+
+def general(request):
+    context = {'proyectos' : Projecto5.objects.all()}
+    return render(request , 'general.html' , context)

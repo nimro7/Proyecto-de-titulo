@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=, initial-scale=1.0">
+  <title>Bienvenida</title>
+  <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Google fonts - Playfair Display-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700">
+  <!-- Google fonts - Poppins-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,400i,700">
+  
+</head>
+<body class="bg-gradient-to-r text-center from-red-500 to-purple-500">
+
+  {% include "navbar.html" %}
+  <section class="py-6" style="background-color: rgb(211, 100, 100);">
+    <div class="container">
+      <div class="row mb-5">
+        <!-- blog item-->
+        {% for proyecto in proyectos %}
+        <section class="container mx-20 px-6 p-10">
+        
+            <div class="flex items-center flex-wrap mx-10">
+              <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                <a href="#">
+              <img class="rounded-t-lg" src="/media/{{proyecto.imagen}}" alt="" />
+              </a>
+            <div class="p-5" style="background: linear-gradient(90deg, #667eea 0%, #764ba2 100%)">
+              <a href="#">
+              <h5
+                  class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+              >
+              {{proyecto.titulo}}
+              </h5>
+              </a>
+              <p class="mb-3 font-normal text-white dark:text-gray-400">
+                {{proyecto.categoria}} 
+              </p>
+              <a
+              href="#"
+              class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+              Read more
+              <svg
+                  class="ml-2 -mr-1 w-4 h-4"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+              >
+                  <path
+                  fill-rule="evenodd"
+                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                  ></path>
+              </svg>
+              </a>
+              </div>
+            </div>
+        
+        </div>
+        {% endfor %}
+      
+      
+      </div>
+  {% include "footer.html" %}
+
+</body>
+
+</html>
