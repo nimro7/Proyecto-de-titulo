@@ -170,7 +170,7 @@ def proyecto_detalle(request , slug):
         context['proyecto_obj'] =  proyecto_obj
     except Exception as e:
         print(e)
-    return render(request , 'proyecto_detalle.html' , context)
+    return render(request , 'detalle.html' , context)
 
 def general(request):
     context = {'proyectos' : Projecto5.objects.all()}
