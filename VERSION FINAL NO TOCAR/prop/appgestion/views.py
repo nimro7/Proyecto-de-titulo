@@ -200,3 +200,21 @@ def general(request):
 
 def donar(request):
     return render(request,'donar_proyecto.html')
+
+def proyecto_borrar(request , id):
+    try:
+        projecto5_obj = Projecto5.objects.get(id = id)
+        if projecto5_obj.user == request.user:
+            projecto5_obj.delete()
+            
+            
+        else:
+            print("error")
+        
+        
+            
+        
+    except Exception as e :
+        print(e)
+
+    return redirect('/perfil/')
