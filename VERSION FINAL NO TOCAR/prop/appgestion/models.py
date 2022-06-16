@@ -71,4 +71,6 @@ class Datos_banco(models.Model):
     codigo = models.CharField(max_length=50, blank=True)
     banco = models.CharField(max_length=50, blank=True)
     rut = models.CharField(max_length=50, blank=True)
+    tipo_cuenta = models.CharField(max_length=50, blank=True)
+    tipo_tarjeta = models.CharField(max_length=50, blank=True)
     
