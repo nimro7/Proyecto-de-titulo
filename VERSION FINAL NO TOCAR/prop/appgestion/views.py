@@ -12,7 +12,21 @@ from .form import *
 def render_registro(request):
     return render(request,'registro.html')
 def perfil(request):
-    return render(request,'perfil.html')
+    context = {}
+    try:
+        
+        datos_user = Datos_usuario.objects.filter(user = request.user).first()
+        context['datos_user'] = datos_user
+        datos_banco = Datos_banco.objects.filter(user = request.user).first()
+        context['datos_banco'] = datos_banco
+        
+        projecto5_objs = Projecto5.objects.filter(user = request.user)
+        context['projecto5_objs'] =  projecto5_objs
+        proyecto_equipo = EquipoTrabajo.objects.filter(project = projecto5_objs).first()
+        context['proyecto_equipo'] = proyecto_equipo
+    except Exception as e:
+        print(e)
+    return render(request,'perfil.html', context)
 def login(request):
     return render(request,'logins.html')
 def foter(request):
@@ -168,10 +182,21 @@ def proyecto_detalle(request , slug):
     try:
         proyecto_obj = Projecto5.objects.filter(slug = slug).first()
         context['proyecto_obj'] =  proyecto_obj
+        proyecto_beneficio = Beneficio.objects.filter(project = proyecto_obj).first()
+        context['proyecto_beneficio'] = proyecto_beneficio
+        proyecto_equipo = EquipoTrabajo.objects.filter(project = proyecto_obj).first()
+        context['proyecto_equipo'] = proyecto_equipo
+        proyecto_materiales = materiales.objects.filter(project = proyecto_obj).first()
+        context['proyecto_materiales'] = proyecto_materiales
+        
     except Exception as e:
         print(e)
     return render(request , 'detalle.html' , context)
 
 def general(request):
+
     context = {'proyectos' : Projecto5.objects.all()}
     return render(request , 'general.html' , context)
+
+def donar(request):
+    return render(request,'donar_proyecto.html')

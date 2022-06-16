@@ -54,3 +54,21 @@ class materiales(models.Model):
     instagram = models.CharField(max_length=50,blank=True)
     paginaWeb = models.CharField(max_length=50,blank=True)
     twitter = models.CharField(max_length=50,blank=True)
+
+class Datos_usuario(models.Model):
+    user = models.ForeignKey(User, blank=True , null=True , on_delete=models.CASCADE)
+    genero = models.CharField(max_length=50, blank=True)
+    direccion = models.CharField(max_length=50, blank=True)
+    codigo_postal = models.CharField(max_length=50, blank=True)
+    fecha_nacimiento = models.DateField(blank=True)
+    foto = models.ImageField(upload_to='media', null=True, blank=True)
+    telefono = models.CharField(max_length=50, blank=True)
+    descripcion = models.CharField(max_length=100, blank=True)
+
+class Datos_banco(models.Model):
+    user = models.ForeignKey(User, blank=True , null=True , on_delete=models.CASCADE)
+    tarjeta = models.CharField(max_length=50, blank=True)
+    codigo = models.CharField(max_length=50, blank=True)
+    banco = models.CharField(max_length=50, blank=True)
+    rut = models.CharField(max_length=50, blank=True)
+    

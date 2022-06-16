@@ -17,7 +17,7 @@
 <body class="bg-gradient-to-r text-center from-red-500 to-purple-500">
 
   {% include "navbar.html" %}
-  <section>
+  <section style="background-color: white;">
     <div class="container">
        
         <div class="row text-center">
@@ -30,7 +30,15 @@
                 <div class="text-content">
                     {{proyecto_obj.contenido|safe}}
                 </div>
+                <div>{{proyecto_obj.monto_meta}}</div>
+                <div>{{proyecto_beneficio.categoria_beneficio}}</div>
+                <div>{{proyecto_equipo.empresa}}</div>
+                <div>{{proyecto_materiales.facebook}}</div>
+                <div>{{user_obj.username}}</div>
+                <div>{{datos_banco.tarjeta}}</div>
+                <div>{{datos_user.genero}}</div>
             </div>
+            <button type="submit" > <a href="/donar/">Donar </a></button>
         </div>
     </div>
 </section>
