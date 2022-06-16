@@ -156,7 +156,7 @@ def crear_proyecto(request):
             print(equipo_obj)
             print(beneficio_obj)
             print(materiales_obj)
-            return redirect('/crear_proyecto/')
+            return redirect('/general/')
             
             
     
@@ -218,3 +218,72 @@ def proyecto_borrar(request , id):
         print(e)
 
     return redirect('/perfil/')
+
+def modificar_proyecto(request , slug):
+    context = {}
+    try:
+        
+        
+        proyecto_obj = Projecto5.objects.get(slug = slug)
+       
+        
+        if proyecto_obj.user != request.user:
+            return redirect('/')
+        
+        initial_dict = {'content': proyecto_obj.content}
+        form = Projecto5Form(initial = initial_dict)
+        if request.method == 'POST':
+            form = Projecto5Form(request.POST)
+            print(request.FILES)
+            imagen = request.FILES['imagen']
+            contenido = request.POST.get('contenido')
+            titulo = request.POST.get('titulo')
+            user = request.user
+            categoria = request.POST.get('categoria')
+            monto_recaudar = request.POST.get('monto_recaudar')
+            categoria_beneficio = request.POST.get('categoria_beneficio')
+            nombre_beneficio = request.POST.get('nombre_beneficio')
+            descripcion_beneficio = request.POST.get('descripcion_beneficio')
+            empresa = request.POST.get('empresa')
+            descripcion_empresa = request.POST.get('Descripcion_Empresa')
+            nombre_jefeProjecto  = request.POST.get('nombre_jefeProjecto')
+            nombre_subjefe = request.POST.get('subjefe_proyecto')
+            nombre_subSubjefe = request.POST.get('subSubjefe_proyecto')
+            categoria = request.POST.get('categoria')
+            facebook = request.POST.get('Facebook')
+            instagram = request.POST.get('Instagram')
+            twitter = request.POST.get('twitter')
+            paginaWeb = request.POST.get('paginaWeb')
+            
+            
+            projecto5_obj = Projecto5.objects.create(
+                user = user , categoria = categoria , titulo = titulo,
+                contenido = contenido, imagen = imagen,
+                monto_meta = monto_recaudar
+            )
+
+            beneficio_obj = Beneficio.objects.create(
+                project = projecto5_obj , categoria_beneficio = categoria_beneficio, 
+                nombre_beneficio = nombre_beneficio, descripcion_beneficio = descripcion_beneficio
+                
+            )
+            equipo_obj = EquipoTrabajo.objects.create(
+                project = projecto5_obj , empresa = empresa, 
+                descripcion_empresa = descripcion_empresa, nombre_jefeProjecto = nombre_jefeProjecto ,
+                nombre_subjefe = nombre_subjefe , nombre_subSubjefe = nombre_subSubjefe
+                
+            )
+            materiales_obj = materiales.objects.create(
+                project = projecto5_obj , facebook = facebook, 
+                instagram = instagram, paginaWeb = paginaWeb,
+                twitter = twitter
+                
+            )
+        
+        
+        context['proyecto_obj'] = proyecto_obj
+        context['form'] = form
+    except Exception as e :
+        print(e)
+
+    return render(request , 'modificar.html' , context)
