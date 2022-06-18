@@ -25,24 +25,105 @@
                     src="/media/{{proyecto_obj.imagen}}"
                     alt=""></div>
         </div>
-        <div class="row">
-            <div class="col-xl-8 col-lg-10 mx-auto">
-                <div class="text-content">
-                    {{proyecto_obj.contenido|safe}}
-                </div>
-                <div>{{proyecto_obj.monto_meta}}</div>
-                <div>{{proyecto_beneficio.categoria_beneficio}}</div>
-                <div>{{proyecto_equipo.empresa}}</div>
-                <div>{{proyecto_materiales.facebook}}</div>
-                <div>{{user_obj.username}}</div>
-                <div>{{datos_banco.tarjeta}}</div>
-                <div>{{datos_user.genero}}</div>
-            </div>
-            <button type="submit" > <a href="/donar/">Donar </a></button>
+            
         </div>
+        <div class="row">
+          <div div class="col-xl-12 col-lg-12 mx-auto">
+            <p class="font-mono text-2xl" >CATEGORIA:  {{proyecto_obj.categoria}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 mx-auto">
+            <p class="font-mono text-2xl" >{{proyecto_obj.titulo}}</p>
+          </div>
+          
+        </div>
+        <div class="col-xl-12 col-lg-12 mx-auto">
+          <p class="font-mono text-2xl" > {{proyecto_obj.contenido |safe}} </p>
+        </div>
+        <div class="row">
+          <div class="col-xl-6 col-lg-6 mx-auto">
+            <p class="font-mono text-2xl" >Meta:  {{proyecto_obj.monto_meta}} </p>
+          </div>
+          <div div class="col-xl-6 col-lg-6 mx-auto">
+            <p class="font-mono text-2xl" >Llevamos:  {{proyecto_obj.monto_total}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 mx-auto">
+            <p class="font-mono text-2xl" >Beneficios </p>
+        </div>
+        <div class="row">
+          <div class="col-xl-3 col-lg-3 mx-auto">
+            <p class="font-mono text-lg" >Categoria:  {{proyecto_beneficio.categoria_beneficio}} </p>
+          </div>
+          <div div class="col-xl-3 col-lg-3 mx-auto">
+            <p class="font-mono text-lg" >  {{proyecto_beneficio.nombre_beneficio}}</p>
+          </div>
+          <div div class="col-xl-6 col-lg-6 mx-auto">
+            <p class="font-mono text-lg" >  {{proyecto_beneficio.descripcion_beneficio}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 mx-auto">
+            <p class="font-mono text-2xl" >Empresa Desarrolladora </p>
+        </div>
+        <div class="row">
+          <div class="col-xl-6 col-lg-6 mx-auto">
+            <p class="font-mono text-lg" >Empresa : {{proyecto_equipo.empresa}} </p>
+          </div>
+          <div div class="col-xl-6 col-lg-6 mx-auto">
+            <p class="font-mono text-lg" >Descripcion:  {{proyecto_equipo.descripcion_empresa}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 mx-auto">
+            <p class="font-mono text-2xl" >Equipo de colaboradores </p>
+        </div>
+        <div class="row">
+          <div class="col-xl-4 col-lg-4 mx-auto">
+            <p class="font-mono text-lg" >Jefe : {{proyecto_equipo.nombre_jefeProjecto}} </p>
+          </div>
+          <div div class="col-xl-4 col-lg-4 mx-auto">
+            <p class="font-mono text-lg" >Segundo al mando:  {{proyecto_equipo.nombre_subjefe}}</p>
+          </div>
+          <div div class="col-xl-4 col-lg-4 mx-auto">
+            <p class="font-mono text-lg" >Tercero al mando:  {{proyecto_equipo.nnombre_subSubjefe}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 mx-auto">
+            <p class="font-mono text-2xl" >Redes Sociales </p>
+        </div>
+        <div class="row">
+          <div class="col-xl-3 col-lg-3 mx-auto">
+            <p class="font-mono text-lg" >Facebook : {{proyecto_materiales.facebook}} </p>
+          </div>
+          <div div class="col-xl-3 col-lg-3 mx-auto">
+            <p class="font-mono text-lg" >Instagram :  {{proyecto_materiales.instagram}}</p>
+          </div>
+          <div div class="col-xl-3 col-lg-3 mx-auto">
+            <p class="font-mono text-lg" >Pagina web:  {{proyecto_materiales.paginaWeb}}</p>
+          </div>
+          <div div class="col-xl-3 col-lg-3 mx-auto">
+            <p class="font-mono text-lg" >Pagina web:  {{proyecto_materiales.twitter}}</p>
+          </div>
+        </div>
+
     </div>
+    <div class="row">
+     
+      <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+        <a href="/donar/">Donar </a></button>
+     
+
+    </div>
+
 </section>
-  {% include "footer.html" %}
+
+
+     
+<footer>{% include "footer.html" %}</footer>
 
 </body>
 
