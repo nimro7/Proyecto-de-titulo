@@ -219,21 +219,23 @@ def proyecto_borrar(request , id):
 
     return redirect('/perfil/')
 
-def modificar_proyecto(request , slug):
+def modificar_proyecto(request , slug ):
     context = {}
+    
     try:
         
         
-        proyecto_obj = Projecto5.objects.get(slug = slug)
-       
-        
-        if proyecto_obj.user != request.user:
+        projecto5_obj = Projecto5.objects.get(slug = slug)
+        equipo_obj = EquipoTrabajo.objects.get(project = projecto5_obj)
+        materiales_obj = materiales.objects.get(project = projecto5_obj)
+        beneficio_obj = Beneficio.objects.get(project = projecto5_obj)
+        if projecto5_obj.user != request.user:
             return redirect('/')
         
-        initial_dict = {'content': proyecto_obj.content}
+        initial_dict = {'contenido': projecto5_obj.contenido}
         form = Projecto5Form(initial = initial_dict)
         if request.method == 'POST':
-            form = Projecto5Form(request.POST)
+            form = Projecto5Form(request.POST, request.FILES)
             print(request.FILES)
             imagen = request.FILES['imagen']
             contenido = request.POST.get('contenido')
@@ -256,32 +258,41 @@ def modificar_proyecto(request , slug):
             paginaWeb = request.POST.get('paginaWeb')
             
             
-            projecto5_obj = Projecto5.objects.create(
+            projecto5_obj = Projecto5.objects.filter( slug = slug).update(
                 user = user , categoria = categoria , titulo = titulo,
                 contenido = contenido, imagen = imagen,
                 monto_meta = monto_recaudar
             )
 
-            beneficio_obj = Beneficio.objects.create(
-                project = projecto5_obj , categoria_beneficio = categoria_beneficio, 
+            
+                
+            beneficio_obj = Beneficio.objects.filter( project = projecto5_obj).update(
+                categoria_beneficio = categoria_beneficio, 
                 nombre_beneficio = nombre_beneficio, descripcion_beneficio = descripcion_beneficio
                 
             )
-            equipo_obj = EquipoTrabajo.objects.create(
-                project = projecto5_obj , empresa = empresa, 
+            equipo_obj = EquipoTrabajo.objects.filter( project = projecto5_obj).update(
+                empresa = empresa, 
                 descripcion_empresa = descripcion_empresa, nombre_jefeProjecto = nombre_jefeProjecto ,
                 nombre_subjefe = nombre_subjefe , nombre_subSubjefe = nombre_subSubjefe
                 
             )
-            materiales_obj = materiales.objects.create(
-                project = projecto5_obj , facebook = facebook, 
+            materiales_obj = materiales.objects.filter( project = projecto5_obj).update(
+                facebook = facebook, 
                 instagram = instagram, paginaWeb = paginaWeb,
                 twitter = twitter
                 
             )
+
         
+        context['projecto5_obj'] = projecto5_obj
+        context['beneficio_obj'] = beneficio_obj
+        context['equipo_obj'] = equipo_obj
+        context['materiales_obj'] = materiales_obj
         
-        context['proyecto_obj'] = proyecto_obj
+        print(projecto5_obj)
+        print(beneficio_obj)
+        print(materiales_obj)
         context['form'] = form
     except Exception as e :
         print(e)
