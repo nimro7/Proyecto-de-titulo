@@ -7,6 +7,7 @@ from django.http import Http404
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as loginn, logout
 from django.contrib import messages
+from django.db.models import Sum
 from .form import *
 # Create your views here.
 def render_registro(request):
@@ -62,13 +63,17 @@ def crear_usuario(request):
         pass1=request.POST['pass1']
         email = request.POST['email']
         fname=request.POST['fname'] 
-        lname=request.POST['lname']  
-        
+        lname=request.POST['lname'] 
+        genero=request.POST['genero']
+        rut=request.POST['rut']
         myuser = User.objects.create_user(username, email, pass1)
         myuser.first_name = fname
         myuser.last_name = lname
-
         myuser.save()
+        datos_user= Datos_usuario.objects.create(user = myuser, genero = genero)
+        datos_banco= Datos_banco.objects.create(user = myuser, rut = rut)
+        datos_user.save()
+        datos_banco.save()
 
         messages.success(request, "Tu cuenta ha sido creada")
 
@@ -198,8 +203,42 @@ def general(request):
     context = {'proyectos' : Projecto5.objects.all()}
     return render(request , 'general.html' , context)
 
-def donar(request):
-    return render(request,'donar_proyecto.html')
+def donar(request, id):
+
+    context = {}
+    try:
+            
+        datos_user = Datos_usuario.objects.filter(user = request.user).first()
+        context['datos_user'] = datos_user
+        datos_banco = Datos_banco.objects.filter(user = request.user).first()
+        context['datos_banco'] = datos_banco
+            
+        projecto5_objs = Projecto5.objects.filter(id = id).first()
+        context['projecto5_objs'] =  projecto5_objs
+        if request.method == 'POST':
+            projecto5_objs = Projecto5.objects.filter(id = id).first()
+            monto_trans = request.POST.get('monto')
+            user = request.user
+            monto_total = request.POST.get('monto_total')
+            
+            
+            
+            transaccion_monto = transaccion.objects.create(
+                user = user, project = projecto5_objs,
+                monto = monto_trans)
+
+            print(transaccion_monto)
+            
+            projecto5_objs = Projecto5.objects.filter(id = id).update(
+                monto_total = monto_total + monto_trans
+            )
+            
+    except Exception as e:
+        print(e)
+
+
+
+    return render(request,'donar_proyecto.html', context)
 
 def proyecto_borrar(request , id):
     try:

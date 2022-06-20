@@ -5,8 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <title>Document</title>
 </head>
 
@@ -17,190 +15,115 @@
         <main>  
             <div class="col-md-7 col-lg-8">
               <h4 class="mb-3">Informacion personal</h4>
-              <form class="needs-validation" novalidate>
+              <form class="needs-validation" method="post" novalidate>
+                {% csrf_token %}
                 <div class="row g-3">
                   <div class="col-sm-6">
-                    <label for="firstName" class="form-label"></label>
-                    <input type="text" class="form-control" id="firstName" placeholder="nombres" value="" required>
+                    <label for="firstName" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="nombres" value="{{datos_user.user.first_name}}" disabled>
                     <div class="invalid-feedback">
                       Tus nombres son requeridos.
                     </div>
                   </div>
       
                   <div class="col-sm-6">
-                    <label for="lastName" class="form-label"></label>
-                    <input type="text" class="form-control" id="lastName" placeholder="apellidos" value="" required>
+                    <label for="lastName" class="form-label">Apellido</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="apellidos" value="{{datos_user.user.last_name}}" disabled>
                     <div class="invalid-feedback">
                       Tus apellidos son requeridos.
                     </div>
                   </div>
       
                   <div class="col-12">
-                    <label for="username" class="form-label"></label>
+                    <label for="username" class="form-label">Nombre de usuario</label>
                     <div class="input-group has-validation">
-                      <input type="text" class="form-control" id="username" placeholder="nombre de usuario" required>
+                      <input type="text" class="form-control" id="username" placeholder="nombre de usuario" value="{{datos_user.user.username}}" disabled>
                     <div class="invalid-feedback">
-                        Tu nombre de usuaro es requerido.
+                        Tu nombre de usuario es requerido.
                       </div>
                     </div>
                   </div>
       
                   <div class="col-12">
-                    <label for="email" class="form-label"><span class="text-muted"></span></label>
-                    <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                    <label for="email" class="form-label">Correo<span class="text-muted"></span></label>
+                    <input type="email" class="form-control" id="email" placeholder="you@example.com" value="{{datos_user.user.email}}" disabled>
                     <div class="invalid-feedback">
                       Por favor, ingrese su email. 
                     </div>
                   </div>
       
                   <div class="col-12">
-                    <label for="address" class="form-label"></label>
-                    <input type="text" class="form-control" id="address" placeholder="direccion" required>
+                    <label for="address" class="form-label">Dirección</label>
+                    <input type="text" class="form-control" id="address" placeholder="direccion" value="{{datos_user.direccion}}" disabled>
                     <div class="invalid-feedback">
                       Por favor, ingrese su direccion.
                     </div>
                   </div>
       
-                  <div class="col-md-4">
-                    <label for="ciudad" class="form-label">Seleccione su ciudad</label>
-                    <select class="form-select" id="state" required>
-                      <option value="">seleccione...</option>
-                      <option>santiago</option>
-                      <option>santiago</option>
-                      <option>argentina</option>
-                      <option>colombia</option>
-                      <option>venezuela</option>
-                      <option>bolivia</option>
-                      <option>otro...</option>
-                    </select>
-                  </div>
+                  
                 </div>
       
                 <hr class="my-4">
-      
-                
-      
-                <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="save-info">
-                  <label class="form-check-label" for="save-info">Save this information for next time</label>
-                </div>
+
       
                 <hr class="my-4">
       
                 <h4 class="mb-3">Donacion</h4>
                 
                 <h4 class="mb-3">Cantidad a donar</h4>
-                <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-                    <div class="col">
-                      <div class="card mb-4 rounded-3 shadow-sm">
-                        <div class="card-header py-3">
-                          <h4 class="my-0 fw-normal">$10.00</h4>
-                        </div>
-                        <div class="card-body">
-                          <h1 class="card-title pricing-card-title">$10.00<small class="text-muted fw-light">/USD</small></h1>
-                          <ul class="list-unstyled mt-3 mb-4">
-                            <li>1.-Vistaso anticipado de los avances del proyecto</li>
-                          </ul>
-                         </div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="card mb-4 rounded-3 shadow-sm">
-                        <div class="card-header py-3">
-                          <h4 class="my-0 fw-normal">$15.00</h4>
-                        </div>
-                        <div class="card-body">
-                          <h1 class="card-title pricing-card-title">$15.00<small class="text-muted fw-light">/USD</small></h1>
-                          <ul class="list-unstyled mt-3 mb-4">
-                            <li>1.-Vistaso anticipado de los avances del proyecto</li>
-                            <li>2.-Enviar feedback de proyecto</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="card mb-4 rounded-3 shadow-sm">
-                        <div class="card-header py-3">
-                          <h4 class="my-0 fw-normal">$25.00</h4>
-                        </div>
-                        <div class="card-body">
-                          <h1 class="card-title pricing-card-title">$25.00<small class="text-muted fw-light">/USD</small></h1>
-                          <ul class="list-unstyled mt-3 mb-4">
-                            <li>1.-Vistaso anticipado de los avances del proyecto</li>
-                            <li>2.-Enviar feedback de proyecto</li>
-                            <li>3.-Se te entregara el producto de manera anticipada con una carta de agradecimiento</li>
-                            
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div class="col">
-                      <div class="card mb-4 rounded-3 shadow-sm">
-                        <div class="card-header py-3">
-                          <h4 class="my-0 fw-normal">otro monto</h4>
-                        </div>
-                        <div class="card-body">
-                          <h1 class="card-title pricing-card-title">$?????<small class="text-muted fw-light">/USD</small></h1>
-                          <ul class="list-unstyled mt-3 mb-4">
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
+                <div class="col-12">
+                  <select name="monto" id="monto">
+                    <option value="Elija un monto">Elije un monto</option>
+                    <option value=5>5 USD</option>
+                    <option value=10>10 USD</option>
+                    <option value=15>15 USD</option>
+                    <option value=20>20 USD</option>
+                  </select>
+
+
+
+                </div>
                   <p></p>
                   <p></p>                        
-                <div class="my-3">
-                  <div class="form-check">
-                    <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
-                    <label class="form-check-label" for="credit">Credit card</label>
-                  </div>
-                  <div class="form-check">
-                    <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
-                    <label class="form-check-label" for="debit">Debit card</label>
-                  </div>
-                  <div class="form-check">
-                    <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
-                    <label class="form-check-label" for="paypal">PayPal</label>
+               
+                <p></p>
+                <p></p>
+                <div class="col-md-4">
+                  <label for="cc-number" class="form-label">Tipo tarjeta</label>
+                  <input type="text" class="form-control" id="tipo_tarjeta" placeholder="tipo_tarjeta" value="{{datos_banco.tipo_tarjeta}}" disabled>
+                  <div class="invalid-feedback">
+                    Tipo de tarjeta
                   </div>
                 </div>
-                <p></p>
-                <p></p>
                   <div class="col-md-4">
-                    <label for="cc-number" class="form-label"></label>
-                    <input type="text" class="form-control" id="cc-number" placeholder="numero de tarjeta" required>
+                    <label for="cc-number" class="form-label">Tarjeta</label>
+                    <input type="text" class="form-control" id="tarjeta" placeholder="numero de tarjeta" value="{{datos_banco.tarjeta}}" disabled>
                     <div class="invalid-feedback">
-                      Credit card number is required
+                      Tarjeta
                     </div>
                   </div>
       
                   <div class="col-md-2">
-                    <label for="cc-expiration" class="form-label"></label>
-                    <input type="text" class="form-control" id="cc-expiration" placeholder="MM / AA" required>
+                    <label for="cc-expiration" class="form-label">Codigo</label>
+                    <input type="password" class="form-control" id="codigo" placeholder="codigo" value="{{datos_banco.codigo}}" disabled>
                     <div class="invalid-feedback">
-                      Expiration date required
+                      Codigo tarjeta
                     </div>
                   </div>
 
                   <div class="col-md-2">
-                    <label for="cc-expiration" class="form-label"></label>
-                    <input type="text" class="form-control" id="cc-expiration" placeholder="cvc" required>
+                    <label for="cc-expiration" class="form-label">Monto recaudado</label>
+                    <input type="number" class="form-control" id="monto_total" placeholder="monto_total" value="{{projecto5_objs.monto_total}}" disabled>
                     <div class="invalid-feedback">
-                      Expiration date required
+                      Monto recaudado
                     </div>
                   </div>
-
-                  <div class="col-md-3">
-                    <label for="cc-expiration" class="form-label"></label>
-                    <input type="text" class="form-control" id="cc-expiration" placeholder="codigo postal" required>
-                    <div class="invalid-feedback">
-                      Expiration date required
-                    </div>
-                  </div>
+                  
                 </div>
                   
                 <hr class="my-4">
                 <p></p>
-                <button class="w-50 btn btn-primary btn-lg" type="submit">Comfirma donacion</button>
+                <button class="w-50 btn btn-primary btn-lg" type="submit">Confirma donacion</button>
               </form>
             </div>
           </div>

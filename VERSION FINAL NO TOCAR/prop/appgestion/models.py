@@ -27,6 +27,7 @@ class Projecto5(models.Model):
     upload_to= models.DateTimeField(auto_now=True)
     monto_meta = models.IntegerField()
     monto_total = models.IntegerField(default=0)
+    
     def __str__(self):
         return self.titulo
     
@@ -60,17 +61,24 @@ class Datos_usuario(models.Model):
     genero = models.CharField(max_length=50, blank=True)
     direccion = models.CharField(max_length=50, blank=True)
     codigo_postal = models.CharField(max_length=50, blank=True)
-    fecha_nacimiento = models.DateField(blank=True)
+    fecha_nacimiento = models.DateField(blank=True, null=True)
     foto = models.ImageField(upload_to='media', null=True, blank=True)
     telefono = models.CharField(max_length=50, blank=True)
     descripcion = models.CharField(max_length=100, blank=True)
 
 class Datos_banco(models.Model):
     user = models.ForeignKey(User, blank=True , null=True , on_delete=models.CASCADE)
-    tarjeta = models.CharField(max_length=50, blank=True)
-    codigo = models.CharField(max_length=50, blank=True)
-    banco = models.CharField(max_length=50, blank=True)
-    rut = models.CharField(max_length=50, blank=True)
-    tipo_cuenta = models.CharField(max_length=50, blank=True)
-    tipo_tarjeta = models.CharField(max_length=50, blank=True)
+    tarjeta = models.CharField(max_length=50, blank=True, null=True)
+    codigo = models.CharField(max_length=50, blank=True, null=True)
+    banco = models.CharField(max_length=50, blank=True, null=True)
+    rut = models.CharField(max_length=50, blank=True, null=True)
+    tipo_cuenta = models.CharField(max_length=50, blank=True, null=True)
+    tipo_tarjeta = models.CharField(max_length=50, blank=True, null=True)
+
+class transaccion(models.Model):
+    user = models.ForeignKey(User, blank=True , null=True , on_delete=models.CASCADE)
+    project = models.ForeignKey(Projecto5, blank=True , null=True , on_delete=models.CASCADE)
+    monto = models.IntegerField()
+    
+
     
