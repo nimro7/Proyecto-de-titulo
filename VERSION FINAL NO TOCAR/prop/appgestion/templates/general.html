@@ -17,41 +17,43 @@
 <body class="bg-gradient-to-r text-center from-red-500 to-purple-500">
 
   {% include "navbar.html" %}
-<section>
-  <div class="container">
-    <div class="row mb-5">
-      <!-- blog item-->
-      {% for proyecto in proyectos %}
-      <div class="col-lg-3 col-sm-6 mb-4 hover-animate">
-        <div class="card shadow border-0 h-100">
-          <a href="{% url 'detalle' proyecto.slug %}">
-            <img class="img-fluid card-img-top" src="/media/{{proyecto.imagen}}" alt="..."/></a>
-          <div class="card-body"><a class="text-uppercase text-muted text-sm letter-spacing-2" href="#">
-            Creado por: {{proyecto.user.username}} </a>
-            <h5 class="my-2"><a class="text-dark" href="{% url 'detalle' proyecto.slug %}">
-            Titulo: {{proyecto.titulo}}          </a></h5>
-            <p class="text-gray-500 text-sm my-3"><i class="far fa-clock mr-2"></i>
-            Categoría:  {{proyecto.categoria}}</p>
-            <!-- <p class="my-2 text-muted text-sm">
+<div style="background:whitesmoke">
+  <section>
+    <div class="container">
+      <div class="row mb-5 pt-20 pb-20">
+        <!-- blog item-->
+        {% for proyecto in proyectos %}
+        <div class="col-lg-3 col-sm-6 mb-4 hover-animate">
+          <div class="card shadow border-0 h-100">
+           <a href="{% url 'detalle' proyecto.slug %}">
+              <img class="img-fluid card-img-top" src="/media/{{proyecto.imagen}}" alt="..."/></a>
+            <div class="card-body"><a class="text-uppercase text-muted text-sm letter-spacing-2" href="#">
+             Creado por: {{proyecto.user.username}} </a>
+              <h5 class="my-2"><a class="text-dark" href="{% url 'detalle' proyecto.slug %}">
+              Titulo: {{proyecto.titulo}}          </a></h5>
+              <p class="text-gray-500 text-sm my-3"><i class="far fa-clock mr-2"></i>
+              Categoría:  {{proyecto.categoria}}</p>
+              <!-- <p class="my-2 text-muted text-sm">
               {{blog.content|safe}}
-            </p>
-          -->
-            <a class="btn btn-link pl-0"href="{% url 'detalle' proyecto.slug %}">Read more<i class="fa fa-long-arrow-alt-right ml-2"></i></a> 
+             </p>
+            -->
+              <a class="btn btn-link pl-0"href="{% url 'detalle' proyecto.slug %}">Read more<i class="fa fa-long-arrow-alt-right ml-2"></i></a> 
+            </div>
           </div>
         </div>
+        {% endfor %}
+    
+    
       </div>
-      {% endfor %}
-    
-    
+      <nav aria-label="Proyecto pagination">
+          <ul class="pagination justify-content-between mb-5 pb-20">
+            <li class="page-item"><a class="page-link text-sm rounded" href="#"> <i class="fa fa-chevron-left mr-1"></i>Proyectos antiguos</a></li>
+            <li class="page-item disabled"><a class="page-link text-sm rounded" href="#" tabindex="-1">Proyectos nuevos  <i class="fa fa-chevron-right ml-1"></i></a></li>
+          </ul>
+        </nav>
     </div>
-    <nav aria-label="Proyecto pagination">
-        <ul class="pagination justify-content-between mb-5">
-          <li class="page-item"><a class="page-link text-sm rounded" href="#"> <i class="fa fa-chevron-left mr-1"></i>Older posts</a></li>
-          <li class="page-item disabled"><a class="page-link text-sm rounded" href="#" tabindex="-1">Newer posts  <i class="fa fa-chevron-right ml-1"></i></a></li>
-        </ul>
-      </nav>
   </div>
-</section>
+  </section>
   {% include "footer.html" %}
 
 </body>
