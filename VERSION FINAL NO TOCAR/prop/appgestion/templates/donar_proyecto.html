@@ -9,6 +9,23 @@
 </head>
 
 <body>
+  <script type="text/javascript">
+    function sumar(){
+      var num1 = document.getElementById('monto').value;
+      var num2 = document.getElementById('monto_total').value;
+
+      if(num1 == ''){
+        num1 = 0;
+      }
+      if(num2 == ''){
+        num2 = 0;
+      }
+
+      var sumar = parseInt(num1) + parseInt(num2);
+
+      document.getElementById('resultado').value = sumar;
+    }
+  </script>
 {% include 'navbar.html' %}
 <div class="container">
     <main><div class="container">
@@ -70,18 +87,19 @@
       
                 <h4 class="mb-3">Donacion</h4>
                 
-                <h4 class="mb-3">Cantidad a donar</h4>
-                <div class="col-12">
-                  <select name="monto" id="monto">
-                    <option value="Elija un monto">Elije un monto</option>
-                    <option value=5>5 USD</option>
-                    <option value=10>10 USD</option>
-                    <option value=15>15 USD</option>
-                    <option value=20>20 USD</option>
-                  </select>
-
-
-
+                <label>Cantidad a donar</label>
+                <div class="col-md-2">
+                  <input type="number" class="form-control" name="monto" id="monto" onkeyup="sumar();">
+                </div>
+                <div class="col-md-2">
+                  <label for="cc-expiration" class="form-label">Monto recaudado</label>
+                  <input type="number" class="form-control" id="monto_total" placeholder="monto_total" value="{{projecto5_objs.monto_total}}" onkeyup="sumar();" readonly>
+                  <div class="invalid-feedback">
+                    Monto recaudado
+                  </div>
+                </div>
+                
+                  <input type="number" name="resultado" id="resultado" readonly hidden>
                 </div>
                   <p></p>
                   <p></p>                        
@@ -111,13 +129,7 @@
                     </div>
                   </div>
 
-                  <div class="col-md-2">
-                    <label for="cc-expiration" class="form-label">Monto recaudado</label>
-                    <input type="number" class="form-control" id="monto_total" placeholder="monto_total" value="{{projecto5_objs.monto_total}}" disabled>
-                    <div class="invalid-feedback">
-                      Monto recaudado
-                    </div>
-                  </div>
+                  
                   
                 </div>
                   

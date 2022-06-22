@@ -27,7 +27,15 @@ def perfil(request):
         context['proyecto_equipo'] = proyecto_equipo
     except Exception as e:
         print(e)
+    
+    if request.method == 'POST':
+        foto = request.FILES['foto']
+        foto_obj = Datos_usuario.objects.filter( user = request.user).update(
+            foto = foto
+        )
+    
     return render(request,'perfil.html', context)
+
 def login(request):
     return render(request,'logins.html')
 def foter(request):
@@ -219,7 +227,7 @@ def donar(request, id):
             projecto5_objs = Projecto5.objects.filter(id = id).first()
             monto_trans = request.POST.get('monto')
             user = request.user
-            monto_total = request.POST.get('monto_total')
+            resultado = request.POST.get('resultado')
             
             
             
@@ -230,7 +238,7 @@ def donar(request, id):
             print(transaccion_monto)
             
             projecto5_objs = Projecto5.objects.filter(id = id).update(
-                monto_total = monto_total + monto_trans
+                monto_total = resultado
             )
             
     except Exception as e:
@@ -337,3 +345,19 @@ def modificar_proyecto(request , slug ):
         print(e)
 
     return render(request , 'modificar.html' , context)
+
+def juegos(request):
+
+    context = {'proyectos' : Projecto5.objects.filter(categoria = 'juego')}
+    return render(request , 'juegos.html' , context)
+
+def tecnologia(request):
+
+    context = {'proyectos' : Projecto5.objects.filter(categoria = 'tecnologia')}
+    return render(request , 'tecnologia.html' , context)
+
+def arte(request):
+
+    context = {'proyectos' : Projecto5.objects.filter(categoria = 'arte')}
+    return render(request , 'arte.html' , context)
+

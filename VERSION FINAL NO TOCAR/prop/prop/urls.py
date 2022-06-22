@@ -41,6 +41,9 @@ urlpatterns = [
     path('donar/<id>' ,views.donar, name="donar"),
     path('borrar/<id>' , views.proyecto_borrar, name="borrar"),
     path('modificar/<slug>' , views.modificar_proyecto, name="modificar"),
+    path('juegos/',views.juegos),
+    path('tecnologia/',views.tecnologia),
+    path('arte/',views.arte),
     path('password_change/done/', auth_views.PasswordChangeDoneView.as_view(template_name='password_reset/password_change_done.html'), 
         name='password_change_done'),
 
