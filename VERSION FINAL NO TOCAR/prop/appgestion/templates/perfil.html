@@ -32,7 +32,7 @@
                 </button>
             </div>
         </div>
-    </div>
+ </div>
     <!-- End of Navbar -->
 
     <div class="container mx-auto my-5 p-5">
@@ -46,6 +46,11 @@
                         src="/media/{{datos_user.foto}}"
                             alt="">
                     </div>
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                    <input type="file" name="foto" id="foto" class="btn btn-primary">
+                    <input type="submit" class="text-center bg-red-500 hover:bg-red-800 mb-4 ml-5 text-white font-bold py-2 px-10 border-b-4 border-red-500 hover:border-red-800 rounded">
+                    </form>
                     <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">{{datos_user.user.first_name}} {{datos_user.user.last_name}}</h1>
                     
                     <h3 class="text-gray-600 font-lg text-semibold leading-6"> </h3>
@@ -212,7 +217,27 @@
             
         </div>
     </div>
-    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
 </div>
 {% include 'footer.html' %}
 </body>
