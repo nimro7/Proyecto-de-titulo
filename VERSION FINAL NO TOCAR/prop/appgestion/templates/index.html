@@ -6,9 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet"href="https://unpkg.com/flowbite@1.4.5/dist/flowbite.min.css"/>
+    <link href="https://unpkg.com/tailwindcss@2.2.4/dist/tailwind.min.css" rel="stylesheet">
 
     <script src="https://unpkg.com/flowbite@1.4.5/dist/flowbite.js"></script>
+     <!-- Google fonts - Playfair Display-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700">
+  <!-- Google fonts - Poppins-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,400i,700">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
   <body class="bg-gradient-to-r from-red-500 to-purple-500">
     {% include "navbar.html" %}
@@ -148,132 +153,38 @@
         </button>
       </div>
       <hr width="100%">
-      <h2 class="text-4xl font-bold text-center text-gray-700 mb-10">
+      <h4 class="text-4xl font-bold text-center text-gray-700 mb-10">
         Proyectos populares
-    </h2>
-      <section class="container mx-20 px-6 p-10">
-        
-            <div class="flex items-center flex-wrap mx-10">
-              <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-                <a href="#">
-              <img class="rounded-t-lg" src="https://picsum.photos/400/200" alt="" />
-              </a>
-            <div class="p-5" style="background: linear-gradient(90deg, #667eea 0%, #764ba2 100%)">
-              <a href="#">
-              <h5
-                  class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-              >
-                  Noteworthy technology acquisitions 2021
-              </h5>
-              </a>
-              <p class="mb-3 font-normal text-white dark:text-gray-400">
-              Here are the biggest enterprise technology acquisitions of 2021 so
-              far, in reverse chronological order.
-              </p>
-              <a
-              href="#"
-              class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-              Read more
-              <svg
-                  class="ml-2 -mr-1 w-4 h-4"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-              >
-                  <path
-                  fill-rule="evenodd"
-                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                  ></path>
-              </svg>
-              </a>
+    </h4>
+  <section>
+    <div class="container">
+      <div class="row mb-5 pt-20 pb-20">
+        {% for proyecto in proyecto_obj %}
+          <div class="col-lg-3 col-sm-6 mb-4 hover-animate">
+            <div class="card shadow border-0 h-100">
+              <a href="{% url 'detalle' proyecto.slug %}">
+                <img class="img-fluid card-img-top" src="/media/{{proyecto.imagen}}" alt="..."/></a>
+              <div class="card-body"><a class="text-uppercase text-muted text-sm letter-spacing-2" href="#">
+              Creado por: {{proyecto.user.username}} </a>
+              <h5 class="my-2"><a class="text-dark" href="{% url 'detalle' proyecto.slug %}">
+              Titulo: {{proyecto.titulo}}          </a></h5>
+              <p class="text-gray-500 text-sm my-3"><i class="far fa-clock mr-2"></i>
+              Categoría:  {{proyecto.categoria}}</p>
+              <!-- <p class="my-2 text-muted text-sm">
+              {{blog.content|safe}}
+            </p>
+            -->
+              <a class="btn btn-link pl-0"href="{% url 'detalle' proyecto.slug %}">Read more<i class="fa fa-long-arrow-alt-right ml-2"></i></a> 
               </div>
             </div>
-      
-            <div class="flex items-center flex-wrap mx-10">
-              <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-                <a href="#">
-                  <img class="rounded-t-lg" src="https://picsum.photos/400/200" alt="" />
-                </a>
-              <div class="p-5" style="background: linear-gradient(90deg, #667eea 0%, #764ba2 100%)">
-                <a href="#">
-                  <h5
-                    class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-                  >
-                  Noteworthy technology acquisitions 2021
-                  </h5>
-                </a>
-                <p class="mb-3 font-normal text-white dark:text-gray-400">
-                Here are the biggest enterprise technology acquisitions of 2021 so
-                far, in reverse chronological order.
-                </p>
-                <a
-                href="#"
-                class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                >
-                Read more
-              <svg
-                  class="ml-2 -mr-1 w-4 h-4"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-              >
-                  <path
-                  fill-rule="evenodd"
-                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                  ></path>
-              </svg>
-              </a>
           </div>
-            </div>
-      
-            <div class="flex items-center flex-wrap mx-10">
-              <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-          <a href="#">
-              <img class="rounded-t-lg" src="https://picsum.photos/400/200" alt="" />
-          </a>
-          <div class="p-5" style="background: linear-gradient(90deg, #667eea 0%, #764ba2 100%)">
-              <a href="#">
-              <h5
-                  class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                  Noteworthy technology acquisitions 2021
-              </h5>
-              </a>
-              <p class="mb-3 font-normal text-white dark:text-gray-400" >
-              Here are the biggest enterprise technology acquisitions of 2021 so
-              far, in reverse chronological order.
-              </p>
-              <a
-              href="#"
-              class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-              Read more
-              <svg
-                  class="ml-2 -mr-1 w-4 h-4"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-              >
-                  <path
-                  fill-rule="evenodd"
-                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                  ></path>
-              </svg>
-              </a>
-              
-          </div>
-          
-            </div>
-            
-      
-      </section>
-      
+          {% endfor %}
+      </div>
     </div>
+  </section>
+    
     
 
-    {% include "footer.html" %}
-  </body>
+{% include "footer.html" %}
+</body>
 </html>

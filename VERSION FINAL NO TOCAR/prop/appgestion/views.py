@@ -1,6 +1,7 @@
 
 
 # Create your views here.
+from csv import excel_tab
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.http import Http404
@@ -41,7 +42,15 @@ def login(request):
 def foter(request):
     return render(request,'footer.html')
 def index(request):
-    return render(request,'index.html')
+    context = {}
+    try:
+
+        proyecto_obj = Projecto5.objects.all().order_by('-monto_total')
+        context['proyecto_obj'] =  proyecto_obj
+    except Exception as e:
+        print(e)
+
+    return render(request,'index.html', context)
 def contacto(request):
     try:
         correo = request.POST['correo']
@@ -241,6 +250,8 @@ def donar(request, id):
                 monto_total = resultado
             )
             
+
+            return redirect('/general/')
     except Exception as e:
         print(e)
 
