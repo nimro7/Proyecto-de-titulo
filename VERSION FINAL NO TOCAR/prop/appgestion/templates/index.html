@@ -159,7 +159,7 @@
   <section>
     <div class="container">
       <div class="row mb-5 pt-20 pb-20">
-        {% for proyecto in proyecto_obj %}
+        {% for proyecto in pagina.object_list %}
           <div class="col-lg-3 col-sm-6 mb-4 hover-animate">
             <div class="card shadow border-0 h-100">
               <a href="{% url 'detalle' proyecto.slug %}">

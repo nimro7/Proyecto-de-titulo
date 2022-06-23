@@ -10,6 +10,7 @@ from django.contrib.auth import authenticate, login as loginn, logout
 from django.contrib import messages
 from django.db.models import Sum
 from .form import *
+from django.core.paginator import Paginator
 # Create your views here.
 def render_registro(request):
     return render(request,'registro.html')
@@ -46,7 +47,12 @@ def index(request):
     try:
 
         proyecto_obj = Projecto5.objects.all().order_by('-monto_total')
-        context['proyecto_obj'] =  proyecto_obj
+
+        paginator = Paginator(proyecto_obj, 4)
+
+        pagina = paginator.get_page(1)
+
+        context['pagina'] =  pagina
     except Exception as e:
         print(e)
 
