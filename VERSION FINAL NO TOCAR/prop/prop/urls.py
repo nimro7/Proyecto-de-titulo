@@ -44,7 +44,7 @@ urlpatterns = [
     path('juegos/',views.juegos),
     path('tecnologia/',views.tecnologia),
     path('arte/',views.arte),
-    
+    path('comunicar/<id>',views.comunicar,name="comunicar"),
     path('password_change/done/', auth_views.PasswordChangeDoneView.as_view(template_name='password_reset/password_change_done.html'), 
         name='password_change_done'),
 

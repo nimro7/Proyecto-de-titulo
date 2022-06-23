@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body class="bg-gradient-to-r from-red-500 to-purple-500">
+    {% include "navbar.html" %}
+    <section>
+    <div style="background:whitesmoke">
+        <h1 class="text-4xl font-bold pl-20 pt-20 mb-5 text-gray-700">
+            ¿Quieres contactarte con el encargado de este proyecto?
+        </h1>
+        
+        
+        
+        
+        <form action="/contacto/" class="w-full pl-20 max-w-lg text-center" method="post">
+            
+            {% csrf_token %}
+            <table>
+            <tr>
+                <td>
+            <div class="mb-3 w-full xl:w-96 text-left">
+                <label for="small-input" class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">¿Con qué necesitas ayuda?</label>
+                <select id="titulo" name="titulo" class="form-select appearance-none
+                  block
+                  w-full
+                  px-3
+                  py-1.5
+                  text-base
+                  font-normal
+                  text-gray-900
+                  bg-gray-50 bg-clip-padding bg-no-repeat
+                  border border-solid border-gray-300
+                  rounded
+                  transition
+                  ease-in-out
+                  m-4
+                  focus:text-gray-900 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+                    <option selected>-</option>
+                    <option value='Problemas con los beneficios'>Problemas con los beneficios</option>
+                    <option value='¿Quieres trabajar con nostros?'>¿Quieres trabajar con nostros?</option>
+                    <option value='¿Quieres patrocinar directamente?'>¿Quieres patrocinar directamente?</option>
+                    <option value='¿Dar tu opinión?'>¿Dar tu opinión?</option>
+                </select>
+              </div>
+                </td>
+                <td></td><td></td><td></td><td></td><td></td><td></td>
+                <td>
+            <div class="text-left"> 
+                <label for="small-input" class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">Sub Titulo</label> 
+                <input type="text" name="sub_titulo" id="sub_titulo" class="block p-2.5 w-full text-sm m-4 pl-20 text-gray-900  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-whitedark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder=""  >
+            </div>
+            </td>
+            </tr>
+            </table>
+            <div class="text-left">
+                <label for="small-input" class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">Comentarios</label>
+            </div>
+            <div>
+            <textarea id="textarea" rows="8"  placeholder="" name="textarea" itemid="textarea" class="block pb-2 w-full text-sm m-3 text-gray-900  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-whitedark:focus:ring-blue-500 dark:focus:border-blue-500" ></textarea> 
+            </div>
+            <table>
+            <tr>
+            <td>
+            <div>
+            <label for="" class=" text-left block mb-2 text-sm m-4 font-medium text-gray-500 dark:text-gray-300">Imagen</label>
+            </div>
+             
+            <div>
+                <input type="file" name="imagen" class="form-control p-4" >
+            </div>
+            </td>
+            <td> 
+            <div>
+            <label for="" class=" text-left block mb-2 text-sm m-4 font-medium text-gray-500 dark:text-gray-300">Archivo</label>
+            </div>  
+            <div>
+                <input type="file" name="archivo"id="archivo" class="form-control p-4" >
+            </div> 
+            </td>
+            <td>
+                <div>
+                <label for="" class=" text-left block mb-2 text-sm m-4 font-medium text-gray-500 dark:text-gray-300"></label>
+                </div>
+            
+            <div class="text-left"> 
+                <button class="text-center bg-red-500 hover:bg-red-800 mb-4 ml-5 text-white font-bold py-2 px-10 border-b-4 border-red-500 hover:border-red-800 rounded" type="submit"> Enviar </button>
+            </div> 
+            </td> 
+            </tr>
+            </table>
+            
+        </form>
+        
+        
+    </div>
+    </section>
+    <hr><hr><hr><hr>
+    {% include "footer.html" %}
+</body>
+</html>

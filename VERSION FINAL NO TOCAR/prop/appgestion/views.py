@@ -378,3 +378,26 @@ def arte(request):
     context = {'proyectos' : Projecto5.objects.filter(categoria = 'arte')}
     return render(request , 'arte.html' , context)
 
+def comunicar(request, id):
+
+    try:
+        projecto5_obj = Projecto5.objects.get(id = id)
+        if request.method == 'POST':
+            projecto5_obj = Projecto5.objects.filter(id = id)
+
+            user = request.user
+            imagen = request.FILES['imagen']
+            archivo = request.FILES['archivo']
+            titulo = request.POST.get('titulo')
+            sub_titulo = request.POST.get('sub_titulo')
+            descripcion = request.POST.get('textarea')
+            cc = Comunicaciones.objects.create(
+                user=user, project=projecto5_obj ,
+                titulo=titulo, sub_titulo=sub_titulo,
+                descripcion=descripcion,imagen=imagen,
+                archivo=archivo)
+
+            print(cc)
+    except Exception as e :
+        print(e)
+    return render(request,'comunica.html' )

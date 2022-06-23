@@ -81,4 +81,11 @@ class transaccion(models.Model):
     monto = models.IntegerField()
     
 
-    
+class Comunicaciones(models.Model):
+    user = models.ForeignKey(User, blank=True , null=True , on_delete=models.CASCADE)
+    project = models.ForeignKey(Projecto5, blank=True , null=True , on_delete=models.CASCADE)
+    titulo = models.CharField(max_length=50, blank=True, null=True)
+    sub_titulo =models.CharField(max_length=50, blank=True, null=True)
+    descripcion =models.CharField(max_length=50, blank=True, null=True) 
+    imagen = models.ImageField(upload_to='media', blank=True, null=True)
+    archivo= models.FileField(upload_to='media', blank=True, null=True)
