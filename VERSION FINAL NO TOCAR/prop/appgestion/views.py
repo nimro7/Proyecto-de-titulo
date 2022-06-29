@@ -30,11 +30,18 @@ def perfil(request):
     except Exception as e:
         print(e)
     
+    usuario = Datos_usuario.objects.filter(user = request.user).first()
+    Fotoformulario = FotoForm(instance=usuario)
     if request.method == 'POST':
-        foto = request.FILES['foto']
-        foto_obj = Datos_usuario.objects.filter( user = request.user).update(
-            foto = foto
-        )
+        Fotoformulario = FotoForm(request.POST, request.FILES, instance=usuario)
+        if Fotoformulario.is_valid():
+            Fotoformulario.save()
+            datos_user = Datos_usuario.objects.filter(user = request.user).first()
+            context['datos_user'] = datos_user
+            context['Fotoformulario']= Fotoformulario
+            return render(request,'perfil.html', context)
+        
+    context['Fotoformulario']= Fotoformulario
     
     return render(request,'perfil.html', context)
 

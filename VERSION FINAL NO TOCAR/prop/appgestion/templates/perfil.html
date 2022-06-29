@@ -41,15 +41,19 @@
             <!-- Left Side -->
             <div class="w-full md:w-3/12 md:mx-2">
                 <!-- Profile Card -->
+                
                 <div class="bg-white p-3 border-t-4 border-green-400">
                     <div class="image overflow-hidden">
                         <img class="h-auto w-full mx-auto"
                         src="/media/{{datos_user.foto}}"
                             alt="">
                     </div>
+
                     <form action="" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
-                    <input type="file" name="foto" id="foto" class="btn btn-primary">
+                        {{ Fotoformulario.as_p }}
+                        {{ Fotoformulario.errors }}
+                    
                     <input type="submit" class="text-center bg-red-500 hover:bg-red-800 mb-4 ml-5 text-white font-bold py-2 px-10 border-b-4 border-red-500 hover:border-red-800 rounded">
                     </form>
                     <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">{{datos_user.user.first_name}} {{datos_user.user.last_name}}</h1>

@@ -16,3 +16,7 @@ class Projecto5Form(forms.ModelForm):
         fields4 = ['contenido']
 
         
+class FotoForm(forms.ModelForm):
+    class Meta:
+        model = Datos_usuario
+        fields = ['foto']
