@@ -183,10 +183,10 @@
                                 <thead>
                                   <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Blog title</th>
-                                    <th scope="col">Created at</th>
-                                    <th scope="col">Action</th>
-                                    <th scope="col">id</th>
+                                    <th scope="col">Titulo</th>
+                                    <th scope="col">Fecha creación</th>
+                                    
+                                    
                                   </tr>
                                 </thead>
                                 <tbody>
@@ -195,10 +195,10 @@
                                     <th scope="row">{{forloop.counter}}</th>
                                     <td>{{proyecto.titulo}}</td>
                                     <td>{{proyecto.created_at}}</td>
-                                    <td>{{proyecto.id}}</td>
+                                    
                                     <td>
-                                        <a href="{% url 'modificar'  proyecto.slug %}" class="btn btn-success">Update</a>
-                                        <a href="{% url 'borrar' proyecto.id %}" class="btn btn-danger">Delete</a>
+                                        <a href="{% url 'modificar'  proyecto.slug %}" class="text-center bg-blue-500 p-1 rounded">Modificar</a>
+                                        <a href="{% url 'borrar' proyecto.id %}" class="text-center bg-red-500 p-1 rounded">Borrar</a>
                         
                         
                                     </td>

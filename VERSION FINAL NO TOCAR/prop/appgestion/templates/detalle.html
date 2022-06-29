@@ -50,7 +50,7 @@
                        <!-- Profile Card -->
                        <div class="bg-white p-3 border-t-4 border-green-400">
                            <div class="image overflow-hidden">
-                               <img class="h-auto w-full mx-auto"
+                               <img class="img-fluid w-100 mx-auto"
                                src="/media/{{proyecto_obj.imagen}}"
                                    alt="">
                            </div>
@@ -184,6 +184,7 @@
     
         <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
         <a href="{% url 'comunicar' proyecto_obj.id %}">Enviar Mensaje </a></button> </button>
+    </div>
     </div>
     </div>
   </section>

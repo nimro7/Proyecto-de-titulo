@@ -321,8 +321,11 @@ def modificar_proyecto(request , slug ):
             twitter = request.POST.get('twitter')
             paginaWeb = request.POST.get('paginaWeb')
             
+            projecto5_obj = Projecto5.objects.get(slug = slug)
+            if projecto5_obj.user == request.user:
+                projecto5_obj.delete()
             
-            projecto5_obj = Projecto5.objects.filter( slug = slug).update(
+            projecto5_obj = Projecto5.objects.filter( slug = slug).create(
                 user = user , categoria = categoria , titulo = titulo,
                 contenido = contenido, imagen = imagen,
                 monto_meta = monto_recaudar
@@ -330,19 +333,19 @@ def modificar_proyecto(request , slug ):
 
             
                 
-            beneficio_obj = Beneficio.objects.filter( project = projecto5_obj).update(
-                categoria_beneficio = categoria_beneficio, 
+            beneficio_obj = Beneficio.objects.create(
+                project = projecto5_obj , categoria_beneficio = categoria_beneficio, 
                 nombre_beneficio = nombre_beneficio, descripcion_beneficio = descripcion_beneficio
                 
             )
-            equipo_obj = EquipoTrabajo.objects.filter( project = projecto5_obj).update(
-                empresa = empresa, 
+            equipo_obj = EquipoTrabajo.objects.create(
+                project = projecto5_obj , empresa = empresa, 
                 descripcion_empresa = descripcion_empresa, nombre_jefeProjecto = nombre_jefeProjecto ,
                 nombre_subjefe = nombre_subjefe , nombre_subSubjefe = nombre_subSubjefe
                 
             )
-            materiales_obj = materiales.objects.filter( project = projecto5_obj).update(
-                facebook = facebook, 
+            materiales_obj = materiales.objects.create(
+                project = projecto5_obj , facebook = facebook, 
                 instagram = instagram, paginaWeb = paginaWeb,
                 twitter = twitter
                 
@@ -365,7 +368,7 @@ def modificar_proyecto(request , slug ):
 
 def juegos(request):
 
-    context = {'proyectos' : Projecto5.objects.filter(categoria = 'juego')}
+    context = {'proyectos' : Projecto5.objects.filter(categoria = 'juegos')}
     return render(request , 'juegos.html' , context)
 
 def tecnologia(request):

@@ -25,7 +25,11 @@
       <div class="row">
           <div class="col-md-12">
             <label for="">Categoria</label>
-            <input type="text" class="form-control" placeholder="categoria" name="categoria" value="{{projecto5_obj.categoria}}">
+            <select name="categoria" id="categoria" class="block p-2.5 w-full text-sm m-4 pl-20 text-gray-900  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-whitedark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <option value="juegos">Juegos</option>
+              <option value="tecnologia">Tecnología</option>
+              <option value="arte">Arte</option>
+             </select>
           </div>
           <div class="col-md-12">
               <label>Enter blog title</label>
@@ -101,10 +105,10 @@
 
       </div>
 
-      <button type="submit" class="btn btn-primary mt-4">Modificar proyecto</button>
+      <button type="submit" class="text-center bg-red-500 hover:bg-red-800 mb-4 ml-5 text-white font-bold py-2 px-10 border-b-4 border-red-500 hover:border-red-800 rounded">Modificar proyecto</button>
 
   </form>
-
+  
 </div> 
 
 
