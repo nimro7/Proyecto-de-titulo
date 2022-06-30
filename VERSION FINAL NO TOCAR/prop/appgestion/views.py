@@ -1,8 +1,7 @@
 
 
 # Create your views here.
-from email import generator
-from django.forms import formset_factory
+from csv import excel_tab
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.http import Http404
@@ -11,7 +10,7 @@ from django.contrib.auth import authenticate, login as loginn, logout
 from django.contrib import messages
 from django.db.models import Sum
 from .form import *
-from django.db import connections
+from django.core.paginator import Paginator
 # Create your views here.
 def render_registro(request):
     return render(request,'registro.html')
@@ -31,18 +30,18 @@ def perfil(request):
     except Exception as e:
         print(e)
     
+    usuario = Datos_usuario.objects.filter(user = request.user).first()
+    Fotoformulario = FotoForm(instance=usuario)
     if request.method == 'POST':
-        foto = request.FILES['foto']
-        genero = request.POST.get('genero')
-        user = request.user
-        datos_user 
-        datos_user = Datos_usuario.objects.get(user = user)
-        if datos_user.user == request.user:
-            datos_user.delete()
+        Fotoformulario = FotoForm(request.POST, request.FILES, instance=usuario)
+        if Fotoformulario.is_valid():
+            Fotoformulario.save()
+            datos_user = Datos_usuario.objects.filter(user = request.user).first()
+            context['datos_user'] = datos_user
+            context['Fotoformulario']= Fotoformulario
+            return render(request,'perfil.html', context)
         
-        datos_user = Datos_usuario.objects.create(user=user,genero=genero,
-            foto = foto
-        )
+    context['Fotoformulario']= Fotoformulario
     
     return render(request,'perfil.html', context)
 
@@ -51,7 +50,20 @@ def login(request):
 def foter(request):
     return render(request,'footer.html')
 def index(request):
-    return render(request,'index.html')
+    context = {}
+    try:
+
+        proyecto_obj = Projecto5.objects.all().order_by('-monto_total')
+
+        paginator = Paginator(proyecto_obj, 4)
+
+        pagina = paginator.get_page(1)
+
+        context['pagina'] =  pagina
+    except Exception as e:
+        print(e)
+
+    return render(request,'index.html', context)
 def contacto(request):
     try:
         correo = request.POST['correo']
@@ -251,6 +263,8 @@ def donar(request, id):
                 monto_total = resultado
             )
             
+
+            return redirect('/general/')
     except Exception as e:
         print(e)
 
@@ -324,6 +338,8 @@ def modificar_proyecto(request , slug ):
                 monto_meta = monto_recaudar
             )
 
+            
+                
             beneficio_obj = Beneficio.objects.create(
                 project = projecto5_obj , categoria_beneficio = categoria_beneficio, 
                 nombre_beneficio = nombre_beneficio, descripcion_beneficio = descripcion_beneficio
@@ -359,7 +375,7 @@ def modificar_proyecto(request , slug ):
 
 def juegos(request):
 
-    context = {'proyectos' : Projecto5.objects.filter(categoria = 'juego')}
+    context = {'proyectos' : Projecto5.objects.filter(categoria = 'juegos')}
     return render(request , 'juegos.html' , context)
 
 def tecnologia(request):
@@ -372,51 +388,26 @@ def arte(request):
     context = {'proyectos' : Projecto5.objects.filter(categoria = 'arte')}
     return render(request , 'arte.html' , context)
 
-def comunicar(request, id):  
-        context = {}
-        try:         
-            
-            projecto5_objs = Projecto5.objects.filter(id = id).first()    
-            if request.method == 'POST':  
-                form = Projecto5Form(request.POST, request.FILES)           
-                projecto5_objs = Projecto5.objects.filter(id = id).first()              
-                user = request.user             
-                imagen = request.FILES['imagen']             
-                archivo = request.FILES['archivo']             
-                titulo = request.POST.get('titulo')           
-                sub_titulo = request.POST.get('sub_titulo')          
-                descripcion = request.POST.get('textarea')            
-                cc = Comunicaciones.objects.create(
-                    user=user, project=projecto5_objs ,                 
-                    titulo=titulo, sub_titulo=sub_titulo,                 
-                    descripcion=descripcion,imagen=imagen,                 
-                    archivo=archivo)  
-                print(cc)         
-                context['form'] = form          
-        except Exception as e :         
-            print(e)     
-        return render(request,'comunica.html', context)
+def comunicar(request, id):
 
-def editarperfildatos(request):
-    context = {}
     try:
-        
-        datos_user = Datos_usuario.objects.filter(user = request.user).first()
-        context['datos_user'] = datos_user
-        if datos_user.user == request.user:
-                datos_user.delete()
-       
-        
-    except Exception as e:
+        projecto5_obj = Projecto5.objects.get(id = id)
+        if request.method == 'POST':
+            projecto5_obj = Projecto5.objects.filter(id = id)
+
+            user = request.user
+            imagen = request.FILES['imagen']
+            archivo = request.FILES['archivo']
+            titulo = request.POST.get('titulo')
+            sub_titulo = request.POST.get('sub_titulo')
+            descripcion = request.POST.get('textarea')
+            cc = Comunicaciones.objects.create(
+                user=user, project=projecto5_obj ,
+                titulo=titulo, sub_titulo=sub_titulo,
+                descripcion=descripcion,imagen=imagen,
+                archivo=archivo)
+
+            print(cc)
+    except Exception as e :
         print(e)
-    if request.method == 'POST': 
-        user = request.user
-        genero =request.POST.get('genero')
-        fecha_nacimiento =request.POST.get('cumpleaños')
-        telefono =request.POST.get('telefono')
-        direccion=request.POST.get('direccion')
-        foto =request.FILES['foto']
-        datos_user = Datos_usuario.objects.create(user=user,genero=genero,direccion=direccion, fecha_nacimiento= fecha_nacimiento,telefono=telefono,foto=foto)
-        return render(request,'perfil.html')
-        
-    return render(request,'modificar_perfil_datos.html',context)
+    return render(request,'comunica.html' )
