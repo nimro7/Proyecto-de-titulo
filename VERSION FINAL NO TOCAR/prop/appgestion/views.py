@@ -411,3 +411,34 @@ def comunicar(request, id):
     except Exception as e :
         print(e)
     return render(request,'comunica.html' )
+
+def editarperfildatos(request):
+    context = {}
+    try:
+
+        datos_user = Datos_usuario.objects.filter(user = request.user).first()
+        context['datos_user'] = datos_user
+        if request.method == 'POST':
+            user = request.user
+            genero = request.POST.get('genero')
+            direccion = request.POST.get('direccion')
+            fecha_nacimiento = request.POST.get('cumpleaños')
+            
+            telefono = request.POST.get('telefono')
+            datos_user = Datos_usuario.objects.update(user=user,genero=genero,direccion=direccion, fecha_nacimiento= fecha_nacimiento,telefono=telefono)
+            datos_user = Datos_usuario.objects.filter(user = request.user).first()
+            context['datos_user'] = datos_user
+            datos_user = Datos_usuario.objects.filter(user = request.user).first()
+            context['datos_user'] = datos_user
+            datos_banco = Datos_banco.objects.filter(user = request.user).first()
+            context['datos_banco'] = datos_banco
+        
+            projecto5_objs = Projecto5.objects.filter(user = request.user)
+            context['projecto5_objs'] =  projecto5_objs
+            Fotoformulario = FotoForm(instance=user)
+            context['Fotoformulario'] = Fotoformulario
+
+            return render(request,'perfil.html', context)
+    except Exception as e:
+        print(e)
+    return render(request,'modificar_perfil_datos.html',context)

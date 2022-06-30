@@ -42,7 +42,7 @@
             <div class="w-full md:w-3/12 md:mx-2">
                 <!-- Profile Card -->
                 
-                <div class="bg-white p-3 border-t-4 border-green-400">
+                <div class="bg-white p-3 ">
                     <div class="image overflow-hidden">
                         <img class="h-auto w-full mx-auto"
                         src="/media/{{datos_user.foto}}"
@@ -208,13 +208,13 @@
                                 <tbody>
                                     {% for proyecto in projecto5_objs %}
                                   <tr>
-                                    <th scope="row">{{forloop.counter}}</th>
+                                    <th scope="row ">{{forloop.counter}}</th>
                                     <td>{{proyecto.titulo}}</td>
                                     <td>{{proyecto.created_at}}</td>
                                     
-                                    <td>
-                                        <a href="{% url 'modificar'  proyecto.slug %}" class="text-center bg-blue-500 m-3 p-2 rounded">Modificar</a>
-                                        <a href="{% url 'borrar' proyecto.id %}" class="text-center bg-red-500 p-2 m-3 rounded">Borrar</a>
+                                    <td class="p-2">
+                                        <a href="{% url 'modificar'  proyecto.slug %}" class="text-center bg-blue-500  p-2 rounded">Modificar</a>
+                                        <a href="{% url 'borrar' proyecto.id %}" class="text-center bg-red-500 p-2  rounded">Borrar</a>
                         
                         
                                     </td>

@@ -21,11 +21,12 @@
     </h2>
     
     
-    <form method="post" class="w-full pl-20 max-w-lg text-center" enctype="multipart/form-data">
+    <form method="post" class="flex text-center" enctype="multipart/form-data">
       {% csrf_token %}
-      <div class="row">
-          <div class="text-left">
-            <label for="small-input" class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">Categoria</label>
+      <div class="w-1/2 p-10">
+        <label for="small-input" class="block mb-2 text-2xl m-5  font-medium text-gray-900 dark:text-gray-300">Tu proyecto</label>
+          <div class="text-left ">
+            <label for="small-input" class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">Categoria  *</label>
            <select name="categoria" id="categoria" class="block p-2.5 w-full text-sm m-4 pl-20 text-gray-900  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-whitedark:focus:ring-blue-500 dark:focus:border-blue-500">
             <option value="-">-</option>
             <option value="juegos">Juegos</option>
@@ -34,28 +35,45 @@
            </select>
           </div>
           <div class="text-left">
-              <label for="small-input" class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">Titulo del Proyecto</label>
-              <input type="text" class="block p-2.5 w-full text-sm m-4 pl-20 text-gray-900  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-whitedark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" name="titulo">
+              <label for="small-input" class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">Titulo del Proyecto  *</label>
+              <input type="text" class="block p-2.5 w-full text-sm m-4 pl-20 text-gray-900  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-whitedark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" name="titulo" required>
           </div>
       
           <div class="text-left">
-            <label for="small-input" class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">Monto a recaudar</label>
+            <label for="small-input" class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">Monto a recaudar  *</label>
             <input type="number" class="block p-2.5 w-full text-sm m-4 pl-20 text-gray-900  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-whitedark:focus:ring-blue-500 dark:focus:border-blue-500"  placeholder="" name="monto_recaudar">
           </div>
           <div class="text-left">
-            <label for="small-input" class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">Categoria Beneficio</label>
+            <label for="small-input" class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">Categoria Beneficio  *</label>
             <input type="text" class="block p-2.5 w-full text-sm m-4 pl-20 text-gray-900  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-whitedark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" name="categoria_beneficio">
 
           </div>
           <div class="text-left">
-            <label for="small-input" class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">Nombre Beneficio</label>
+            <label for="small-input" class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">Nombre Beneficio  *</label>
             <input type="text" class="block p-2.5 w-full text-sm m-4 pl-20 text-gray-900  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-whitedark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" name="nombre_beneficio">
 
           </div>
           <div class="text-left">
-            <label for="small-input" class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">Descripcion Beneficio</label>
+            <label for="small-input" class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">Descripcion Beneficio  *</label>
             <input type="text" class="block p-2.5 w-full text-sm m-4 pl-20 text-gray-900  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-whitedark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" name="descripcion_beneficio">
           </div>
+          <div class="text-left">
+            <label for="" class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">Imagen portada  *</label>
+            <input type="file" name="imagen" class="form-control p-4" required>
+          </div>
+            
+          <div class="text-left">
+            <label for="small-input" class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300"></label>
+              {{form.media}}
+              {{form.as_p}}
+        </div>  
+        <div class=" text-left p-4">
+          <button type="submit" class="text-center bg-red-500 hover:bg-red-800 mb-4 ml-5 text-white font-bold py-2 px-10 border-b-4 border-red-500 hover:border-red-800 rounded">Crear Proyecto</button>
+        </div>
+        
+        </div>
+        <div class="w-1/2 p-10">
+          <label for="small-input" class="block mb-2 text-2xl m-5  font-medium text-gray-900 dark:text-gray-300">Tu equipo</label>
           <div class="text-left">
             <label for="small-input" class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">Empresa</label>
             <input type="text" class="block p-2.5 w-full text-sm m-4 pl-20 text-gray-900  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-whitedark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" name="empresa">
@@ -76,6 +94,7 @@
             <label for="small-input" class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">Nombre sub-sub-Jefe Proyecto</label>
             <input type="text" class="block p-2.5 w-full text-sm m-4 pl-20 text-gray-900  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-whitedark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" name="subSubjefe_proyecto">
           </div>
+          <label for="small-input" class="block mb-2 text-2xl m-5 pt-2 font-medium text-gray-900 dark:text-gray-300">Redes sociales</label>
           <div class="text-left">
             <label for="small-input" class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">Facebook</label>
             <input type="text" class="block p-2.5 w-full text-sm m-4 pl-20 text-gray-900  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-whitedark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" name="Facebook">
@@ -92,24 +111,13 @@
             <label for="small-input" class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300">Twitter</label>
             <input type="text" class="block p-2.5 w-full text-sm m-4 pl-20 text-gray-900  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-whitedark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" name="twitter">
           </div>
-          <div class="text-left">
-            <label for="small-input" class="block mb-2 text-sm m-5 font-medium text-gray-900 dark:text-gray-300"></label>
-              {{form.media}}
-              {{form.as_p}}
-        </div>  
-        
-        <div class="text-left">
-
-          <input type="file" name="imagen" class="form-control p-3" >
-        </div>
-          <div class="text-left p-4">
-            <button type="submit" class="text-center bg-red-500 hover:bg-red-800 mb-4 ml-5 text-white font-bold py-2 px-10 border-b-4 border-red-500 hover:border-red-800 rounded">Crear Proyecto</button>
-            </div>
+          
           
         
-
+          
 
       </div>
+      
       
     </form>
 

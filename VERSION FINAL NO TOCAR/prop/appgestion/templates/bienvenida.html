@@ -41,11 +41,15 @@
         Bienvenido a Propalar!
       </h2>
       <h3 class="text-2xl mb-8 text-gray-700">
-        La plataforma donde tus proyectos [REDACTED]
+        La plataforma donde tus proyectos se hacen realidad
       </h3>
 
       <button class="bg-white font-bold rounded-full py-4 px-8 mr-20 mt-20 shadow-lg uppercase tracking-wider">
+        {% if user.is_authenticated %}
         <a href="/crear_proyecto">Crea tu proyecto</a>
+        {% else %}
+        <a href="/login">Crea tu proyecto</a>
+        {% endif %}
       </button>
       <button class="bg-white font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider">
         <a href="/general">Explora otros proyectos</a>
@@ -59,26 +63,26 @@
       </h2>
       <div class="flex items-center flex-wrap mb-20">
         <div class="w-full md:w-1/2">
-          <h4 class="text-3xl text-gray-700 font-bold mb-3">Publica tus proyectos</h4>
+          <h4 class="text-3xl text-gray-700 font-bold  mb-3">Publica tus proyectos</h4>
           <p class="text-gray-700 mb-8">Al publicar tus proyectos estos estarán a la vista del público, quienes podrán apoyarte de distintas maneras.</p>
         </div>
-        <div class="w-full md:w-1/2">
+        <div class="w-full md:w-1/2 p-20">
           <img src="static/img/publicar.png" style="width: 200px;" alt="publicar" />
         </div>
       </div>
 
       <div class="flex items-center flex-wrap mb-20">
-        <div class="w-full md:w-1/2">
+        <div class="w-full md:w-1/2 pl-40">
           <img src="static/img/patrocinio.png" style="width: 200px" alt="apoyo" />
         </div>
-        <div class="w-full md:w-1/2 pl-10">
+        <div class="w-full md:w-1/2 ">
           <h4 class="text-3xl text-gray-700 font-bold mb-3">Apoyo</h4>
           <p class="text-gray-700 mb-8">Colabora con otros usuarios de la plataforma.</p>
         </div>
       </div>
 
       <div class="flex items-center flex-wrap mb-20">
-        <div class="w-full md:w-1/2">
+        <div class="w-full md:w-1/2 p-10">
           <h4 class="text-3xl text-gray-700 font-bold mb-3">Patrocinadores</h4>
           <p class="text-gray-700 mb-8">Incentiva a otros a patrocinar tu proyecto con distintas regalías</p>
         </div>
