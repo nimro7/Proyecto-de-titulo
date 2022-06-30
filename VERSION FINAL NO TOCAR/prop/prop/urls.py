@@ -31,6 +31,7 @@ urlpatterns = [
     path('inicioSesion/',views.inicioSesion),
     path('cerrarSesion/',views.cerrarSesion),
     path('perfil/',views.perfil),
+    path('editarperfildatos/',views.editarperfildatos,name="editarperf"),
     path('contacto/',views.contacto),
     path('bienvenida/',views.crear_proyecto),
     path('crear_proyecto/',views.crear_proyecto),
