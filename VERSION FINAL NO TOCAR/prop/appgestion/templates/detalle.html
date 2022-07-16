@@ -176,7 +176,7 @@
         
     
      
-      <button type="submit" class="text-center bg-red-500 hover:bg-red-800 mb-4 ml-5 text-white font-bold py-2 px-10 border-b-4 border-red-500 hover:border-red-800 rounded">
+      <button type="submit" class="text-center m-10 bg-red-500 hover:bg-red-800 mb-4 ml-5 text-white font-bold py-2 px-10 border-b-4 border-red-500 hover:border-red-800 rounded">
         {% if user.is_authenticated %}
         <a href="{% url 'donar' proyecto_obj.id %}">Donar </a></button>
         {% else %}
