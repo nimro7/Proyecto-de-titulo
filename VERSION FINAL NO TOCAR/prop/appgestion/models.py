@@ -64,7 +64,7 @@ class Datos_usuario(models.Model):
     fecha_nacimiento = models.DateField(blank=True, null=True)
     foto = models.ImageField(upload_to='media', null=True, blank=True)
     telefono = models.CharField(max_length=50, blank=True)
-    descripcion = models.CharField(max_length=100, blank=True)
+    descripcion = models.CharField(max_length=100, blank=True, null=True)
 
 class Datos_banco(models.Model):
     user = models.ForeignKey(User, blank=True , null=True , on_delete=models.CASCADE)

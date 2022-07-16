@@ -42,6 +42,7 @@ urlpatterns = [
     path('donar/<id>' ,views.donar, name="donar"),
     path('borrar/<id>' , views.proyecto_borrar, name="borrar"),
     path('modificar/<slug>' , views.modificar_proyecto, name="modificar"),
+    path('editarperfildatosbanco/',views.editarperfildatosbanco,name="editarperfbanco"),
     path('juegos/',views.juegos),
     path('tecnologia/',views.tecnologia),
     path('arte/',views.arte),

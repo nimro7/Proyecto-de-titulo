@@ -20,3 +20,8 @@ class FotoForm(forms.ModelForm):
     class Meta:
         model = Datos_usuario
         fields = ['foto']
+
+class ComunicaForm(forms.ModelForm):
+    class Meta:
+        model = Comunicaciones
+        fields = '__all__'

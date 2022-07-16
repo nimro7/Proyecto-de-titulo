@@ -390,26 +390,19 @@ def arte(request):
 
 def comunicar(request, id):
 
-    try:
-        projecto5_obj = Projecto5.objects.get(id = id)
-        if request.method == 'POST':
-            projecto5_obj = Projecto5.objects.filter(id = id)
-
-            user = request.user
-            imagen = request.FILES['imagen']
-            archivo = request.FILES['archivo']
-            titulo = request.POST.get('titulo')
-            sub_titulo = request.POST.get('sub_titulo')
-            descripcion = request.POST.get('textarea')
-            cc = Comunicaciones.objects.create(
-                user=user, project=projecto5_obj ,
-                titulo=titulo, sub_titulo=sub_titulo,
-                descripcion=descripcion,imagen=imagen,
-                archivo=archivo)
-
-            print(cc)
-    except Exception as e :
-        print(e)
+    context={}
+    usuario = Datos_usuario.objects.filter(user = request.user).first()
+    projecto = Projecto5.objects.filter( id = id).first()
+    Comunicaform = ComunicaForm(instance=usuario)
+    if request.method == 'POST':
+        Comunicaform = ComunicaForm(request.POST, request.FILES, instance=usuario)
+        if Comunicaform.is_valid():
+            Comunicaform.save()
+            
+            context['Comunicaform']= Comunicaform
+            return render(request,'comunica.html', context)
+        
+    context['Comunicaform']= Comunicaform
     return render(request,'comunica.html' )
 
 def editarperfildatos(request):
@@ -442,3 +435,35 @@ def editarperfildatos(request):
     except Exception as e:
         print(e)
     return render(request,'modificar_perfil_datos.html',context)
+
+def editarperfildatosbanco(request):
+    context = {}
+    try:
+
+        datos_banco = Datos_banco.objects.filter(user = request.user).first()
+        context['datos_banco'] = datos_banco
+        datos_user = Datos_usuario.objects.filter(user = request.user).first()
+        context['datos_user'] = datos_user
+        if request.method == 'POST':
+            user = request.user
+            tarjeta = request.POST.get('tarjeta')
+            codigo = request.POST.get('codigo')
+            banco = request.POST.get('banco')
+            tipo_cuenta=request.POST.get('tipo_cuenta')
+            tipo_tarjeta=request.POST.get('tipo_tarjeta')
+            
+            rut = request.POST.get('rut')
+            datos_banco = Datos_banco.objects.update(user=user, tarjeta=tarjeta, codigo=codigo, banco=banco, tipo_cuenta=tipo_cuenta, tipo_tarjeta=tipo_tarjeta, rut=rut)
+            datos_banco = Datos_banco.objects.filter(user = request.user).first()
+            context['datos_banco'] = datos_banco
+            datos_banco = Datos_banco.objects.filter(user = request.user).first()
+            context['datos_banco'] = datos_banco
+            projecto5_objs = Projecto5.objects.filter(user = request.user)
+            context['projecto5_objs'] =  projecto5_objs
+            Fotoformulario = FotoForm(instance=user)
+            context['Fotoformulario'] = Fotoformulario
+
+            return render(request,'perfil.html', context)
+    except Exception as e:
+        print(e)
+    return render(request,'modificar_perfil_datosbanco.html',context)
